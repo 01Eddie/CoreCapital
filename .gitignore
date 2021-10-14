@@ -1,0 +1,6 @@
+backoffice/__pycache__
+backoffice/proyect/__pycache__
+backoffice/proyect/migrations/__pycache__
+db.sqlite3
+manage.py
+front-office/node_modules
