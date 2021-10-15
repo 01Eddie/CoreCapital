@@ -14,22 +14,30 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap');
         * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
-            overflow: hidden;
         }
 
         @font-face {
-            font-family: "Auxilia-Black.ttf";
-            src: url("./fonts/Auxilia-Black.ttf");
+            font-family: "Auxilia-Black";
+            src: url("./fonts/Auxilia-Black.woff2");
         }
 
         body {
-            /* position: relative; */
+            position: relative;
             background-color: #A8C2D1;
+            background-image: url("img/bg_1.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: right;
+            top: 0px;
+            left: 0px;
+            height: 100vh;
+            z-index: -100;
+            font-family: 'Montserrat'
         }
 
         header {
@@ -37,75 +45,116 @@
             justify-content: space-between;
             z-index: -1;
             align-items: center;
-            padding: 0vh 2vw;
             width: 100%;
-            height: 100%;
-        }
-
-        main {
-            background-image: url("img/bg_call_to_action_0_1.jpg");
-            background-repeat: no-repeat;
-            background-size: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: space-around;
-            top: 0px;
-            left: 0px;
-            /* width: 100vw */;
-            height: 100vh;
-            overflow: hidden;
-            z-index: -100;
-
+            height: 144px;
+            padding: 0 2rem;
         }
 
         .logo {
-            /* height: 57px; */
             width: 218px;
-            margin: 29px 0px 0px;
         }
 
-        h1 {
-            font-family: Auxilia-Black;
-            letter-spacing: 6pt
+        header .header-btn {
+            font-weight: 300;
+            font-size: .9rem;
+            padding: 10px 20px;
+            margin-right: 2rem;
+            background-color: black;
         }
+
+        main {
+            display: flex;
+            align-content: flex-start;
+        }
+
         .content-text{
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-start;
+            padding: 2rem 8rem;
         }
-        .content-text>.h3 {
+
+        .content-text h1 {
+            width: 60%;
+            font-family: Auxilia-Black;
+            font-size: 4.8rem;
+            letter-spacing: 20pt;
+            color: black;
+            padding: 2rem 0;
+        }
+
+        .content-text>.content-h3 {
             font-family: Montserrat;
-            font-size: 8px;
-            letter-spacing: 2pt;
-            margin: 0px 0px 0px 118px;
+            font-size: 0.8rem;
+            letter-spacing: 2.5pt;
+            margin: 0;
         }
+
         .content-text>button.btn {
-            margin: 0px 0px 0px 118px;
+            font-weight: 300;
+            font-size: .93rem;
         }
-        .content-text>h1 {
-            margin: 0px 0px 0px 122px;
+
+        .rotated-text {
+            transform: rotate(270deg);
+            position: absolute;
+            right: 0rem;
+            top: 50%;
+            text-align: left;
         }
 
         .footer {
+            position: fixed;
             left: 0;
             bottom: 0;
             width: 100%;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            align-items: center;
-            padding: 0px 43px;
+            align-content: center;
+            margin-left: 2.6rem;
+            margin-bottom: 3rem;
         }
+
         .footer-right{
             display: flex;
             flex-direction: row;
             justify-content: space-around;
+            align-items: center;
         }
+
         .footer-right>p{
-            margin: 0px 20px 0px 0px; 
+            margin-right: 14px;
+            margin-bottom: 0;
         }
+
+        .footer-icons {
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer-right a {
+            color: black;
+        }
+
+        .fb, .ig, .ln, .tw {
+            background-color: white;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            border-radius: 100%;
+            margin: 0px 1px;
+        }
+
+        .button-group-footer {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            right: 6rem;
+            bottom: 0;
+        }
+
         .icon-wsp{
             text-decoration: none;
             color: white;
@@ -120,15 +169,9 @@
             border-radius: 100%;
             background-color: white;
             padding: 15px;
+            margin-top: 10px;
         }
-        .fb, .ig, .ln, .tw {
-            background-color: white;
-            padding: 10px;
-            text-decoration: none;
-            color: black;
-            border-radius: 100%;
-            margin: 0px 4px;
-        }
+
         </style>
 
 </head>
@@ -136,27 +179,36 @@
 <body>
     <header>
         <img class="logo" src="./img/CorePartners_LogoRGB_positivo.png" alt="Logo Core Partner">
-        <button type="button" class="btn btn-dark">Pagina Principal</button>
+        <button type="button" class="btn btn-dark header-btn">Pagina Principal</button>
     </header>
     <main>
         <div class="content-text">
-            <p class="h3">¿ESTÁS LISTO PARA SACARLE EL JUGO A TU PATRIMONIO?</p>
+            <p class="content-h3">¿ESTÁS LISTO PARA SACARLE EL JUGO A TU PATRIMONIO?</p>
             <h1>OBTÉN TU PERFIL DE RIESGO</h1>
             <button type="button" class="btn btn-light">Iniciar el cuestionario</button>
         </div>
+        <span class="rotated-text">Invirtamos juntos</span>
         <div class="footer">
             <div class="footer-right">
-                <p><strong>CORE Capital SAFI © 2021</strong>
-            (511) 748-4547 / info@corecapital.com.pe</p> 
+                <p>
+                    <strong>CORE Capital SAFI © 2021</strong>
+                    (511) 748-4547 /
+                    <span></span>
+                    <a href="#" target="_blank">
+                        info@corecapital.com.pe
+                    </a>
+                </p> 
+                <div class="footer-icons">
                     <a href="#" ><i class="fab fa-facebook-f fb"></i></a>
                     <a href="#" ><i class="fab fa-twitter tw"></i></a>
                     <a href="#" ><i class="fab fa-linkedin-in ln"></i></a>
                     <a href="#"><i class="fab fa-instagram ig"></i></a>
+                </div>
                 
             </div>
             <div class="button-group-footer">
-                <a href="#" ><i class="fab fa-whatsapp fa-4x icon-wsp"></i></a>
-                <a href="#" ><i class="far fa-envelope fa-4x icon-msg"></i></a>
+                <a href="#" ><i class="fab fa-whatsapp fa-2x icon-wsp"></i></a>
+                <a href="#" ><i class="far fa-envelope fa-2x icon-msg"></i></a>
             </div>
         </div>
     </main>
