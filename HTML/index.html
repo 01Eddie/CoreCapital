@@ -1,1 +1,170 @@
-!
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Partner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        @font-face {
+            font-family: "Auxilia-Black.ttf";
+            src: url("./fonts/Auxilia-Black.ttf");
+        }
+
+        body {
+            /* position: relative; */
+            background-color: #A8C2D1;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            z-index: -1;
+            align-items: center;
+            padding: 0vh 2vw;
+            width: 100%;
+            height: 100%;
+        }
+
+        main {
+            background-image: url("img/bg_call_to_action_0_1.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-around;
+            top: 0px;
+            left: 0px;
+            /* width: 100vw */;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -100;
+
+        }
+
+        .logo {
+            /* height: 57px; */
+            width: 218px;
+            margin: 29px 0px 0px;
+        }
+
+        h1 {
+            font-family: Auxilia-Black;
+            letter-spacing: 6pt
+        }
+        .content-text{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .content-text>.h3 {
+            font-family: Montserrat;
+            font-size: 8px;
+            letter-spacing: 2pt;
+            margin: 0px 0px 0px 118px;
+        }
+        .content-text>button.btn {
+            margin: 0px 0px 0px 118px;
+        }
+        .content-text>h1 {
+            margin: 0px 0px 0px 122px;
+        }
+
+        .footer {
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 43px;
+        }
+        .footer-right{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .footer-right>p{
+            margin: 0px 20px 0px 0px; 
+        }
+        .icon-wsp{
+            text-decoration: none;
+            color: white;
+            background-color: rgba(61, 206, 48, 1);
+            border-radius: 100%;
+            padding: 15px;
+        }
+
+        .icon-msg{
+            text-decoration: none;
+            color: black;
+            border-radius: 100%;
+            background-color: white;
+            padding: 15px;
+        }
+        .fb, .ig, .ln, .tw {
+            background-color: white;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            border-radius: 100%;
+            margin: 0px 4px;
+        }
+        </style>
+
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="./img/CorePartners_LogoRGB_positivo.png" alt="Logo Core Partner">
+        <button type="button" class="btn btn-dark">Pagina Principal</button>
+    </header>
+    <main>
+        <div class="content-text">
+            <p class="h3">¿ESTÁS LISTO PARA SACARLE EL JUGO A TU PATRIMONIO?</p>
+            <h1>OBTÉN TU PERFIL DE RIESGO</h1>
+            <button type="button" class="btn btn-light">Iniciar el cuestionario</button>
+        </div>
+        <div class="footer">
+            <div class="footer-right">
+                <p><strong>CORE Capital SAFI © 2021</strong>
+            (511) 748-4547 / info@corecapital.com.pe</p> 
+                    <a href="#" ><i class="fab fa-facebook-f fb"></i></a>
+                    <a href="#" ><i class="fab fa-twitter tw"></i></a>
+                    <a href="#" ><i class="fab fa-linkedin-in ln"></i></a>
+                    <a href="#"><i class="fab fa-instagram ig"></i></a>
+                
+            </div>
+            <div class="button-group-footer">
+                <a href="#" ><i class="fab fa-whatsapp fa-4x icon-wsp"></i></a>
+                <a href="#" ><i class="far fa-envelope fa-4x icon-msg"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
