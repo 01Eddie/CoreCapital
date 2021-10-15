@@ -21,6 +21,11 @@
             box-sizing: border-box;
         }
 
+        *::selection {
+            background: #F97A00;
+            color: white;
+        }
+
         @font-face {
             font-family: "Auxilia-Black";
             src: url("./fonts/Auxilia-Black.woff2");
@@ -163,6 +168,11 @@
             margin: 0px 1px;
         }
 
+        .fb:hover, .ig:hover, .ln:hover, .tw:hover {
+            background-color: black;
+            color: white;
+        }
+
         .button-group-footer {
             position: absolute;
             display: flex;
@@ -186,6 +196,11 @@
             background-color: white;
             padding: 15px;
             margin-top: 10px;
+        }
+
+        .icon-wsp:hover,
+        .icon-msg:hover {
+            padding: 16px;
         }
 
         </style>
