@@ -14,4 +14,6 @@ $(document).ready(function () {
   }, function () {
     $('.circle-out').removeClass('active');
   });
+
+  // $('.modal').modal('show')
 });
