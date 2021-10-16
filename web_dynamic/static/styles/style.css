@@ -12,7 +12,7 @@
 
 @font-face {
     font-family: "Auxilia-Black";
-    src: url("./fonts/Auxilia-Black.woff2");
+    src: url("../fonts/Auxilia-Black.woff2");
 }
 
 body {
@@ -194,7 +194,7 @@ main {
   border-radius: 50%;
   height: 24px;
   width: 24px;
-  background-color: rgba(0, 0, 0, 0.06);
+  background-color: rgba(0, 0, 0, 0.08);
   position: absolute;
   padding: 2px;
   transition: all .12s ease-out;
