@@ -18,7 +18,7 @@
 body {
     position: relative;
     background-color: #A8C2D1;
-    background-image: url("img/bg_1.jpg");
+    background-image: url("../images/bg_1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: right;
