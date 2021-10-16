@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*::selection {
+    background: #F97A00;
+    color: white;
+}
+
+@font-face {
+    font-family: "Auxilia-Black";
+    src: url("./fonts/Auxilia-Black.woff2");
+}
+
+body {
+    position: relative;
+    background-color: lightblue;
+    background-position: right;
+    height: 100vh;
+    font-family: 'Montserrat';
+    overflow: hidden;
+    
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 70%;
+    width: 90%;
+    margin: auto;
+
+
+
+}
+
+.bloque1 {
+    background-color: #F97A00;
+    height: 100%;
+    width: 15rem;
+
+}
+
+.container {
+    padding: 20px 40px 40px;
+    max-width: 640px;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+}
+
+.logo {
+width: 218px;
+object-fit: contain;
+align-self: flex-start;
+
+}
+
+
+.black {
+    font-weight: bold;
+    position: relative;
+    margin-right: -50%;
+    justify-content:center;
+    
+}
+
+
+
+.container .text button.btn {
+    padding: 10px 20px;
+    font-weight: 300;
+    font-size: .93rem;
+    border: 1px solid;
+    border-color: black;
+    display: center;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.container .text button.btn:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid;
