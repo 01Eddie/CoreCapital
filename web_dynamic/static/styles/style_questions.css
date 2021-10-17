@@ -37,8 +37,7 @@ main {
     height: 80%;
     width: 88%;
     margin: 0;
-    /* margin: auto; */
-    background-color: salmon;
+    /* background-color: salmon; */
 }
 
 .container-left {
@@ -49,6 +48,98 @@ main {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+}
+
+.logo {
+    width: 180px;
+    margin-top: 2rem;
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 70%; */
+    flex-direction: column;
+    max-width: 90%;
+    padding-bottom: 10rem;
+    /* background-color: purple; */
+    /* opacity: 0.8; */
+}
+
+.circle .percent {
+    position: relative;
+    max-width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: green; */
+    /* opacity: 0.8; */
+}
+
+.circle .percent svg {
+    /* position: center absolute; */
+    max-width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: silver; */
+    /* opacity: 0.8; */
+}
+
+.circle .percent svg circle {
+    width: 20%;
+    height: 50%;
+    fill: none;
+    stroke-width: 10;
+    stroke: #000;
+    transform: translate(5px,5px);
+    top: 0;
+    left: 0;
+    position: absolute;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+    stroke-linecap: round;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle .percent svg circle:nth-child(1){
+    stroke-dashoffset: 0;
+    stroke: black;
+}
+
+.circle .percent svg circle:nth-child(2){
+    stroke-dashoffset: calc(440 - (440 * 10) / 100);
+    stroke: white;
+}
+
+.circle .percent .number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* max-width: 20%; */
+    opacity: .8;
+    position: absolute;
+    top: 36%;
+    left: 20%;
+    width: 55%;
+    /* height: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    /* background-color: lightcoral; */
+    /* opacity: 0.8; */
+}
+
+.circle .percent .number h2{
+    font-size: 40px;
+}
+
+.circle .percent .number h2 span{
+    font-size: 30px;
 }
 
 .container-right {
@@ -62,9 +153,29 @@ main {
     align-content: center;
 }
 
-.logo {
-    width: 180px;
-    margin-top: 2rem;
+.boton-x {
+    padding: 10px 20px;
+    font-weight: 250;
+    font-size: 1.7rem;
+    border: solid 1px black;
+    display: block;
+    border-radius: 70%;
+    padding: 10px 15px 10px 15px ;
+    background-color: white;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    margin-right: 1px;
+    top: 15%;
+    right: 12% ;
+    outline: none
+}
+
+.boton-x:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid;
+    outline: none
 }
 
 .text {
@@ -101,112 +212,19 @@ main {
     border: solid 1px black;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: center; */
     border-radius: 4px;
     padding: 5px 45px 5px 5px ;
     background-color: white;
-    margin: 1rem; 
+    margin: 0.5rem 2rem; 
+    padding-left: 1rem;
+    width: 12rem;
+    text-align: left;
 }
 
 .botones:hover {
     background-color: black;
     color: white;
     border: 2px solid;
-}
-
-.boton-x {
-    padding: 10px 20px;
-    font-weight: 250;
-    font-size: 1.7rem;
-    border: solid 1px black;
-    display: block;
-    border-radius: 70%;
-    padding: 10px 15px 10px 15px ;
-    background-color: white;
-    height: 60px;
-    width: 60px;
-    position: absolute;
-    margin-right: 1px;
-    top: 15%;
-    right: 12% 
-}
-
-.boton-x:hover {
-    background-color: black;
-    color: white;
-    border: 2px solid;
-}
-
-.circle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* min-height: 70%; */
-    flex-direction: column;
-    max-width: 100%;
-    padding-bottom: 10rem;
-}
-
-.circle .percent {
-    position: relative;
-    max-width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.circle .percent svg {
-    position: center absolute;
-    max-width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.circle .percent svg circle {
-    width: 100%;
-    height: 100%;
-    fill: none;
-    stroke-width: 10;
-    stroke: #000;
-    transform: translate(5px,5px);
-    stroke-dasharray: 440;
-    stroke-dashoffset: 440;
-    stroke-linecap: round;
-}
-
-.circle .percent svg circle:nth-child(1){
-    stroke-dashoffset: 0;
-    stroke: gray;
-}
-
-.circle .percent svg circle:nth-child(2){
-    stroke-dashoffset: calc(440 - (440 * 10) / 100);
-    stroke: black;
-}
-
-.circle .percent .number {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* max-width: 20%; */
-    opacity: .8;
-    position: absolute;
-    top: 36%;
-    left: 20%;
-    /* width: 55%; */
-    /* height: 100%; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-}
-
-.circle .percent .number h2{
-    font-size: 40px;
-}
-
-.circle .percent .number h2 span{
-    font-size: 30px;
 }
 
