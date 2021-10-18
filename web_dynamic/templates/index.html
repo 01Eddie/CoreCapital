@@ -34,29 +34,81 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="modal fade" id="mymodal">
-                        <div class="modal-dialog modal-lg">
+                    <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
                             <div class="modal-content">
                                 <div class="modal-header">
+                                    <button class="close" type="button" data-dismiss="modal">&times;</button>
                                     <h1 class="modal-title">INSCRÍBETE</h1>
-                                    <button class="close" type="button" data-dismiss="modal">X</button>
                                 </div>
                                 <div class="modal-body">
-                                    <form >
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <select name="motivo" id="">
-                                                    <option value="primer"></option>
-                                                </select>
-
+                                    <div class="formulario">
+                                        <form >
+                                            <div class="row x-gap-contacto y-gap-contacto">
+                                                <div class="col-lg-6">
+                                                    <div class="js-input-group">
+                                                        <select class="minimal" name="motivo" id="" data-requerido>
+                                                            <option value>pregunta1</option>
+                                                            <option value="6">opt1</option>
+                                                            <option value="7">opt2</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 br">
+                                                    <div class="js-input-group">
+                                                        <select class="minimal mr-0" name="documento" data-requerido>
+                                                            <option value>Documento</option>
+                                                            <option value="1">DNI</option>
+                                                            <option value="1">Pasaporte</option>
+                                                            <option value="1">Carnet de Extranjería</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 bl">
+                                                    <div class="js-input-group">
+                                                        <input class="minimal" type="text" name="numero_documento" data-requerido placeholder="Numero #">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="js-input-group">
+                                                        <input type="text" class="minimal" name="nombre" data-requerido placeholder="¿Cuál es tu nombre?" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="js-input-group">
+                                                        <input type="text" class="minimal" name="apellido" data-requerido placeholder="¿Cuál es tu apellido?" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="js-input-group">
+                                                        <input type="email" class="minimal" name="correo" data-requerido placeholder="Correo Electrónico" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="js-input-group">
+                                                        <input type="text" class="minimal num-text" name="telefono" data-requerido placeholder="Teléfono / Celular" />
+                                                    </div>
+                                                </div>
                                             </div>
-
-                                        </div>
-                                    </form>
-                                    <p>This is the body</p>
+                                        </form>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <input class="btn btn-default" data-dismiss="modal" value="Close">
+                                    <div class="control-formulario">
+                                        <span id="politicas-label-click" class="politicas-label">
+                                            Autorizo la recopilación y tratamiento de mis datos personales, he leído las 
+                                            <a class="control-politicas-a" href="https://corecapital.com.pe/docs/CORE_Capital_Politica_de_Privacidad.pdf" target="_blank">
+                                                Políticas de Privacidad
+                                            </a>
+                                        </span>
+                                        <a href="#" class="js-option-politicas option-politicas -cheked">  </a>
+                                        <!-- <a href="#" class="enviar black -lg button fw-600 js-enviar-form sm:mt-16 sm:d-block"> -->
+                                        <a href="#" class="enviar">
+                                            Enviar Mensaje
+                                            <i class="fa fa-paper-plane"></i>
+                                        </a>
+                                    </div>
+                                    <!-- <input class="btn btn-default" data-dismiss="modal" value="Close"> -->
                                 </div>
                             </div>
                         </div>
