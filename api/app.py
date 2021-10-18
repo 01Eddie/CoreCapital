@@ -3,6 +3,7 @@
 from models import storage
 from flask import Flask, app, render_template, make_response, jsonify
 from flask_cors import CORS
+from os import environ
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
@@ -27,10 +28,10 @@ def not_found(error):
 
 if __name__ == "__main__":
     """ Main Function """
-    """ host = environ.get('HBNB_API_HOST')
-    port = environ.get('HBNB_API_PORT')
+    host = environ.get('HBNB_API_HOST') # Host del mysql
+    port = environ.get('HBNB_API_PORT') # Port del mysql
     if not host:
         host = '0.0.0.0'
     if not port:
-        port = '5000' """
+        port = '5000'
     app.run(host=host, port=port, threaded=True)
