@@ -12,8 +12,8 @@ from sqlalchemy.ext.declarative import declarative_base
 import uuid
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
-if models.storage_t == "db":
-    Base = declarative_base()
+""" if models.storage_t == "db": """
+Base = declarative_base()
 
 class BaseModel:
     """The BaseModel class from which future classes will be derived"""
