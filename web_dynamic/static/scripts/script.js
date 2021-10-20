@@ -17,12 +17,12 @@ $(document).ready(function () {
 
   // $('.modal').modal('show')
 
-  $('#mymodal').modal();
+  // $('#mymodal').modal();
 
-  function afterModalTransition (e) {
-    e.setAttribute('style', 'display: none !important;');
-  }
-  $('#mymodal').on('hide.bs.modal', function () {
-    setTimeout(() => afterModalTransition(this), 200);
-  });
+  // function afterModalTransition (e) {
+  //   e.setAttribute('style', 'display: none !important;');
+  // }
+  // $('#mymodal').on('hide.bs.modal', function () {
+  //   setTimeout(() => afterModalTransition(this), 200);
+  // });
 });
