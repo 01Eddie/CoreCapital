@@ -11,6 +11,8 @@ from web_dynamic.app import db
 class Question(BaseModel, db.Model):
     """ Aqui irá los modelos de datos """
     """ __tablename__ = '' """
+
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
 
     def __init__(self, *args, **kwargs):

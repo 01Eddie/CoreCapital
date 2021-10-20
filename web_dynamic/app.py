@@ -7,7 +7,7 @@ from os import environ
 from datetime import datetime
 import models
 from models import app
-from models import db
+# from models import db
 from flask_sqlalchemy import SQLAlchemy
 from models.user import User
 from flask_cors import CORS
@@ -18,6 +18,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/prueba_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
+db = SQLAlchemy(app)
 
 # Mysql Connection
 app.config['MYSQL_HOST'] = 'localhost'
