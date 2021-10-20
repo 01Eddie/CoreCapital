@@ -55,8 +55,9 @@ def add_form():
         active="1"
         created_at =  datetime.utcnow()
         created_by =  datetime.utcnow()
+
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO Users (id_type_doc, name, lastname, email, nro_document, phone, active, created_at, created_by) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (numero_documento, name, lastname, email, nmro_document, phone, active, created_at, created_by))
+        cur.execute("INSERT INTO Users (id_type_doc, name, lastname, email, nro_document, phone, active, created_at, created_by) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)", (numero_documento, name, lastname, email, nmro_document, phone, active, created_at, created_by))
         mysql.connection.commit()
         flash('Added inversors successfully')
         return redirect(url_for('modal'))
