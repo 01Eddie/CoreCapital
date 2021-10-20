@@ -1,10 +1,10 @@
 const form = document.getElementById('form');
 const username = document.getElementById('username');
+const userlastname = document.getElementById('userlastname');
 const email = document.getElementById('email');
-const password = document.getElementById('password');
-const password2 = document.getElementById('password2');
+const phone = document.getElementById('phone');
 
-// Shoe input error message
+// Show input error message
 function showError (input, message) {
   const formControl = input.parentElement;
   formControl.className = 'form-control error';
@@ -72,7 +72,7 @@ function getFieldName (input) {
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  checkRequired([username, email, password, password_confirmation]);
+  checkRequired([username, userlastname, email, phone]);
   checkLength(username, 3, 15);
   checkLength(password, 6, 20);
   checkEmail(email);
