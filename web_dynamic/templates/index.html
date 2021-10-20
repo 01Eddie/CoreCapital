@@ -27,8 +27,8 @@
     </header>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="modal fade2" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- <div class="col-md-12"> -->
+                    <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-xl">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -37,52 +37,41 @@
                                 </div>
                                 <form action="{{url_for('add_form')}}" method="POST">
                                 <div class="modal-body">
-                                    <div class="formulario">        
+                                    <div class="formulario">
                                             <div class="row x-gap-contacto y-gap-contacto">
                                                 <div class="col-lg-6">
                                                     <div class="js-input-group">
-                                                        <select class="minimal" name="motivo" id="" data-requerido>
-                                                            <option value>pregunta1</option>
-                                                            <option value="6">opt1</option>
-                                                            <option value="7">opt2</option>
+                                                        <input type="text" class="minimal" name="name" placeholder="¿Cuál es tu nombre?" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="js-input-group">
+                                                        <input type="text" class="minimal" name="lastname" placeholder="¿Cuál es tu apellido?" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="js-input-group">
+                                                        <input type="email" class="minimal" name="email" placeholder="Correo Electrónico" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="js-input-group">
+                                                        <input type="text" class="minimal num-text" name="phone"  placeholder="Teléfono / Celular" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 br">
+                                                    <div class="js-input-group">
+                                                        <select class="minimal mr-0" name="nmro_document" data-requerido>
+                                                            <option value="0">Documento</option>
+                                                            <option id="1" value="1">DNI</option>
+                                                            <option id="2" value="2">Pasaporte</option>
+                                                            <option id="3" value="3">Carnet de Extranjería</option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <!-- <div class="col-doc minimal col-lg-6"> -->
-                                                    <div class="col-lg-3 br">
-                                                        <div class="js-input-group">
-                                                            <select class="minimal mr-0" name="nmro_document" data-requerido>
-                                                                <option value disabled>Documento</option>
-                                                                <option id="1" value="1">DNI</option>
-                                                                <option id="2" value="2">Pasaporte</option>
-                                                                <option id="3" value="3">Carnet de Extranjería</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 bl">
-                                                        <div class="js-input-group">
-                                                            <input class="mr-1" type="text" name="numero_documento" placeholder="Numero #" required>
-                                                        </div>
-                                                    </div>
-                                                <!-- </div> -->
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-3 bl">
                                                     <div class="js-input-group">
-                                                        <input type="text" class="minimal" name="name" data-requerido placeholder="¿Cuál es tu nombre?" required />
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="js-input-group">
-                                                        <input type="text" class="minimal" name="lastname" data-requerido placeholder="¿Cuál es tu apellido?" required />
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="js-input-group">
-                                                        <input type="email" class="minimal" name="email" data-requerido placeholder="Correo Electrónico" required />
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="js-input-group">
-                                                        <input type="text" class="minimal num-text" name="phone" data-requerido placeholder="Teléfono / Celular" required />
+                                                        <input class="mr-1" type="text" name="numero_documento" placeholder="Numero #" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -109,7 +98,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
         </div>
     <main>
@@ -125,7 +114,7 @@
                 <p>
                     <strong>CORE Capital SAFI © 2021</strong>
                     (511) 748-4547 /
-                    <a href="#" target="_blank">
+                    <a href="https://corecapital.com.pe" target="_blank">
                         info@corecapital.com.pe
                     </a>
                 </p> 
@@ -139,7 +128,7 @@
             <div class="button-group-footer">
                 <a href="https://corecapital.com.pe/whatsapp" target="_blank"><i class="fab fa-whatsapp fa-2x icon-wsp"></i></a>
                 <!-- <a href="#" ><i class="far fa-envelope fa-2x icon-msg"></i></a> -->
-                <a href="#" target="_blank" class="icon-msg">
+                <a href="https://corecapital.com.pe" target="_blank" class="icon-msg">
                     <svg class="sicon-mail" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 21h-24v-18h24v18zm-23-16.477v15.477h22v-15.477l-10.999 10-11.001-10zm21.089-.523h-20.176l10.088 9.171 10.088-9.171z"/></svg>
                 </a>
             </div>
