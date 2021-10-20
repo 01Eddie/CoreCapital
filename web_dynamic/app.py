@@ -50,8 +50,7 @@ def add_form():
         email = data['email']
         phone = data['phone']
         cur = mysql.connection.cursor()
-        # (`id_user`,`id_type_doc`,`name`,`lastname`,`email`,`nro_document`,`phone`,`active`,`created_at`,`created_by`)
-        cur.execute("INSERT INTO Users (name, lastname, email, nmro_document, phone) VALUES (%s,%s,%s,%s,%s)", (name, lastname, email, phone, nmro_document))
+        cur.execute("INSERT INTO Users (id_type_doc, name, lastname, email, nro_document, phone) VALUES (%s,%s,%s,%s,%s)", (numero_documento, name, lastname, email, phone, nmro_document))
         mysql.connection.commit()
         flash('Added inversors successfully')
         return redirect(url_for('modal'))
@@ -60,6 +59,7 @@ def add_form():
 @app.route("/modal", methods=['GET', 'POST'], strict_slashes=False)
 def modal():
     return render_template('modal.html')
+
 
 
 @app.errorhandler(404)
