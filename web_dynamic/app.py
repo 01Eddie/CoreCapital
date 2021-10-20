@@ -20,7 +20,7 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 mysql = MySQL(app)
 
 # settings
-# app.secret_key = "mysecretkey"
+app.secret_key = "mysecretkey"
 
 
 """ cors = CORS(app, resource={r"/api/v1/*": {"origins": "*"}}) """
@@ -46,7 +46,8 @@ def add_form():
         """
         print(data)
         nmro_document = data['nmro_document']
-        numero_documento = data['numero_documento']
+        numero_documento = 1
+        # numero_documento = data['numero_documento']
         name = data['name']
         lastname = data['lastname']
         email = data['email']
@@ -54,11 +55,11 @@ def add_form():
 
         active="1"
         created_at = datetime.utcnow()
-        created_by = datetime.utcnow()
-        """ INSERT INTO `Users` (`id_user`,`id_type_doc`,`name`,`lastname`,`email`,`nro_document`,`phone`,`active`,`created_at`,`created_by`) 
+        created_by = '0'
+        """ INSERT INTO `Users` (`id_user`,`id_type_doc`,`name`,`lastname`,`email`,`nro_document`,`phone`,`active`,`created_at`,`created_by`)
 VALUES (1,1,'admin','admin','admin@gmail.com','11111111','999999999',1,'2021-10-18 02:17:06',1) """
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO Users (id_type_doc, name, lastname, email, nro_document, phone, active, created_at, created_by) VALUES (%s,%s,%s,%s,%s,%s,%s,%d,%d)", (numero_documento, name, lastname, email, nmro_document, phone, active, created_at, created_by))
+        cur.execute("INSERT INTO Users (id_type_doc, name, lastname, email, nro_document, phone, active, created_at, created_by) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)", (numero_documento, name, lastname, email, nmro_document, phone, active, created_at, created_by))
         mysql.connection.commit()
         flash('Added inversors successfully')
         return redirect(url_for('modal'))
