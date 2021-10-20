@@ -37,7 +37,7 @@ def hello_world():
 def add_form():
     if request.method == 'POST':
         data = request.form
-        """ nmro_document =[
+        """ numero_documento =[
             1: DNI
             2: Pasaporte
             3: Carnet de Extranjería]
