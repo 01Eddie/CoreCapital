@@ -6,7 +6,9 @@ from flask import abort, jsonify, make_response, render_template, request, Flask
 from flask_cors import CORS
 from os import environ
 from flask_mysqldb import MySQL
+from datetime import datetime
 
+time = "%Y-%m-%dT%H:%M:%S.%f"
 
 app = Flask(__name__)
 # Mysql Connection
@@ -49,8 +51,12 @@ def add_form():
         lastname = data['lastname']
         email = data['email']
         phone = data['phone']
+
+        active="1"
+        created_at =  datetime.utcnow()
+        created_by =  datetime.utcnow()
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO Users (id_type_doc, name, lastname, email, nro_document, phone) VALUES (%s,%s,%s,%s,%s)", (numero_documento, name, lastname, email, nmro_document, phone))
+        cur.execute("INSERT INTO Users (id_type_doc, name, lastname, email, nro_document, phone, active, created_at, created_by) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (numero_documento, name, lastname, email, nmro_document, phone, active, created_at, created_by))
         mysql.connection.commit()
         flash('Added inversors successfully')
         return redirect(url_for('modal'))
