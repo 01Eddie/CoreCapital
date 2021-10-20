@@ -44,12 +44,14 @@ def add_form():
         """
         print(data)
         nmro_document = data['nmro_document']
+        numero_documento = data['numero_documento']
         name = data['name']
         lastname = data['lastname']
         email = data['email']
         phone = data['phone']
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO Users (name, lastname, email, phone, nmro_document) VALUES (%s,%s,%s,%s, %s)", (name, lastname, email, phone, nmro_document))
+        # (`id_user`,`id_type_doc`,`name`,`lastname`,`email`,`nro_document`,`phone`,`active`,`created_at`,`created_by`)
+        cur.execute("INSERT INTO Users (name, lastname, email, nmro_document, phone) VALUES (%s,%s,%s,%s,%s)", (name, lastname, email, phone, nmro_document))
         mysql.connection.commit()
         flash('Added inversors successfully')
         return redirect(url_for('modal'))

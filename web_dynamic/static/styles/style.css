@@ -83,16 +83,18 @@ main {
     margin: 0;
 }
 
-.content-text>button.btn {
+.content-text button.btn {
     font-weight: 300;
     font-size: .93rem;
     padding: 10px 20px;
+    outline: none;
 }
 
-.content-text>button.btn:hover {
+.content-text button.btn:hover {
     background-color: transparent;
     color: white;
     border: 2px solid;
+    outline: none;
 }
 
 .rotated-text {
@@ -265,10 +267,35 @@ main {
 
 .minimal {
     width: 100%;
-    height: 3rem;
+    height: 3.4rem;
     margin-bottom: 1rem;
     border-radius: 4px;
-    padding: 1rem;
+    padding: 0 1rem;
+    border: solid 2px black;
+}
+
+select {
+    background-color: white;
+    text-overflow: ellipsis;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance: none;
+    background: url(https://admin.corecapital.com.pe/img/br_down.png) no-repeat calc(100% - 8%)!important;
+    outline: none;
+}
+
+.mr-0{
+    border-radius: 4px 0 0 4px;
+    border-style: solid none solid solid;
+}
+
+.mr-1 {
+    border-radius: 0 4px 4px 0;
+    width: 100%;
+    height: 3.4rem;
+    margin-bottom: 1rem;
+    border: solid 2px black;
+    width: 100%;
 }
 
 .row {
@@ -276,15 +303,18 @@ main {
     width: 100%;
 }
 
-.br, .bl {
-    padding: 0;
+.bl input {
+    padding: 1rem;
 }
 
-.bl input{
-    width: 100%;
-    height: 3rem;
-    margin-bottom: 1rem;
-    border-radius: 4px;
+.br {
+    padding: 0;
+    padding-left: 15px;
+}
+
+.bl {
+    padding: 0;
+    padding-right: 15px;
 }
 
 .modal-footer {
@@ -292,12 +322,13 @@ main {
     justify-content: center;
     align-items: baseline;
     flex-direction: column;
-    padding: 1rem 2rem 4rem 3rem;
+    padding: 1rem 4rem 4rem 3rem;
 }
 
 .control-formulario {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: row;
 }
 
@@ -317,18 +348,54 @@ main {
     text-decoration: none;
 }
 
-/* redondo */
+/* radio */
 .option-politicas {
     border: solid 2px black;
     border-radius: 50%;
     width: 2.4rem;
     height: 2.5rem;
-    margin: 0 2rem;
+    margin: 0 3rem 0 1rem;
+}
+
+.control-formulario input[type="radio"] {
+    color: black;
+    background-color: black;
+    border: solid 4px black;
+}
+
+input[type="radio"]:cheked,
+.option-politicas:cheked {
+    color: black;
+    background-color: black;
+    border: solid 2px black;
+}
+
+input[type="radio"]:after {
+    color: black;
+    background-color: black;
+    border: solid 2px black;
+}
+
+input[type="radio"]:cheked:after {
+    color: black;
+    background-color: black;
+    border: solid 2px black;
+}
+
+.btn-submit {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn-submit:hover{
+    text-decoration: none;
 }
 
 .enviar {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: row;
     width: 14rem;
     height: 4rem;
@@ -337,9 +404,18 @@ main {
     color: white;
     border-radius: 6px;
     font-weight: bold;
+    outline: none;
+    border: none;
 }
 
 .enviar:hover {
     text-decoration: none;
-    color: white;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    text-decoration: none;
+}
+
+.enviar i {
+    margin-left: 1rem;
 }
