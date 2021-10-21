@@ -18,9 +18,14 @@ time = "%Y-%m-%dT%H:%M:%S.%f"
 
 class BaseModel:
     """The BaseModel class from which future classes will be derived"""
-    # id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
+    active = db.Column(db.Integer)
+    deleted_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_by = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_by = db.Column(db.Integer)
+    deleted_by = db.Column(db.Integer)
 
 
     def __init__(self, *args, **kwargs):
@@ -37,12 +42,14 @@ class BaseModel:
                 self.updated_at = datetime.strptime(kwargs["updated_at"], time)
             else:
                 self.updated_at = datetime.utcnow()
-            if kwargs.get("id", None) is None:
-                self.id = str(uuid.uuid4())
+            #if kwargs.get("id", None) is None:
+            #    self.id = str(uuid.uuid4())
         else:
-            self.id = str(uuid.uuid4())
+            #self.id = str(uuid.uuid4())
             self.created_at = datetime.utcnow()
             self.updated_at = self.created_at
+            self.active = 1
+            self.created_by = 1
 
     def __str__(self):
         """String representation of the BaseModel class"""
