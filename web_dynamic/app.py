@@ -87,6 +87,10 @@ def modal():
 # def modal():
 #     return redirect(url_for('question'))
 
+@app.route("/question", methods=['GET', 'POST'], strict_slashes=False)
+def questions():
+    
+    return "questions"
 
 @app.errorhandler(404)
 def not_found(error):
