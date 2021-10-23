@@ -14,9 +14,9 @@ from flask_cors import CORS
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/prueba_db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+# app = Flask(__name__)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/prueba_db'
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 db = SQLAlchemy(app)
 
@@ -74,8 +74,9 @@ VALUES (1,1,'admin','admin','admin@gmail.com','11111111','999999999',1,'2021-10-
         # mysql.connection.commit()
         # flash('Added inversors successfully')
         user = User(name = "Jose")
-        db.session.add(user)
-        db.session.commit()
+        # db.session.add(user)
+        # db.session.commit()
+        print(User.id)
         return redirect(url_for('modal'))
 
 
