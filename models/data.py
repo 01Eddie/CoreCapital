@@ -3,12 +3,12 @@
 import models
 from models.base_model import BaseModel
 from os import getenv
-from models import db
+from models import Base
 # import sqlalchemy
 # from sqlalchemy import Column, String
 # from sqlalchemy.orm import relationship
 
-class Data(BaseModel, db.Model):
+class Data(BaseModel, Base):
     """ Aqui irá los modelos de datos del formulario
     name: a
     lastname: a
@@ -17,8 +17,8 @@ class Data(BaseModel, db.Model):
     telefono: a
         """
     """ __tablename__ = '' """
-    name = db.Column(db.String(128), nullable=False)
-    lastname = db.Column(db.String(128), nullable=False)
+    name = Column(String(128), nullable=False)
+    lastname = Column(String(128), nullable=False)
 
     def __init__(self, *args, **kwargs):
         """initializes Amenity"""

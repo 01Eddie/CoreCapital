@@ -3,17 +3,17 @@
 
 from models.base_model import BaseModel
 from flask_sqlalchemy import SQLAlchemy
-from models import db
+from models import Base
 #from sqlalchemy import Column, Integer, String
 #from sqlalchemy.orm import relationship
 
 
-class Survey_Section(BaseModel, db.Model):
+class Survey_Section(BaseModel, Base):
     """This class defines a survey_section by various attributes"""
     __tablename__ = 'Survey_Sections'
 
-    id_survey = db.Column(db.Integer, db.ForeignKey('surveys.id'))
-    name_section = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.String(1024))
-    questions = db.relationship("Question", cascade="all",
+    id_survey = Column(Integer, ForeignKey('surveys.id'))
+    name_section = Column(String(100), nullable=False)
+    description = Column(String(1024))
+    questions = relationship("Question", cascade="all",
                              backref="Survey_Section")

@@ -3,18 +3,18 @@
 
 from models.base_model import BaseModel
 from flask_sqlalchemy import SQLAlchemy
-from models import db
+from models import Base
 from datetime import datetime
 #from sqlalchemy import Column, Integer, String
 #from sqlalchemy.orm import relationship
 
 
-class Survey(BaseModel, db.Model):
+class Survey(BaseModel, Base):
     """This class defines a survey by various attributes"""
     __tablename__ = 'Surveys'
 
-    name_survey = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.String(255))
-    nro_questions = db.Column(db.Integer, nullable=False)
-    surveys = db.relationship("SurveySections", backref("survey"))
+    name_survey = Column(String(100), nullable=False)
+    description = Column(String(255))
+    nro_questions = Column(Integer, nullable=False)
+    surveys = relationship("SurveySections", backref("survey"))
 

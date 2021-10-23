@@ -6,19 +6,19 @@ from os import environ
 # from flask_mysqldb import MySQL
 from datetime import datetime
 import models
-from models import app
+# from models import app
 # from models import db
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
 from models.user import User
 from flask_cors import CORS
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
-# app = Flask(__name__)
+app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/prueba_db'
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
-db = SQLAlchemy(app)
+# db = SQLAlchemy(app)
 
 # Mysql Connection
 app.config['MYSQL_HOST'] = 'localhost'
@@ -26,8 +26,8 @@ app.config['MYSQL_USER'] = 'usr_survey'
 app.config['MYSQL_PASSWORD'] = 'survey_pwd'
 app.config['MYSQL_DB'] = 'cp_survey_db'
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+
 # mysql = MySQL(app)
-# db = SQLAlchemy(app)
 # mysql = SQLAlchemy(appa)
 
 # settings
@@ -90,8 +90,7 @@ def modal():
 
 @app.route("/question", methods=['GET', 'POST'], strict_slashes=False)
 def questions():
-    
-    return "questions"
+    return render_template('questions.html')
 
 @app.errorhandler(404)
 def not_found(error):
@@ -112,6 +111,4 @@ if __name__ == "__main__":
     #     host = '0.0.0.0'
     # if not port:
     #     port = '5000'
-    db.create_all()
-    print("despues de create_all")
     app.run(host='0.0.0.0', port='5000', threaded=True)

@@ -228,3 +228,27 @@ main {
     border: 2px solid;
 }
 
+.next-btn-container {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.next-btn-up {
+    background-color: white;
+    border: 2px solid black;
+    margin: 0;
+    margin-left: 1rem;
+    background: url(https://admin.corecapital.com.pe/img/br_down.png) no-repeat calc(50%)!important;
+    transform: rotate(180deg);
+}
+
+.next-btn {
+    background-color: white;
+    border: 2px solid black;
+    margin: 0;
+    margin-left: 1rem;
+    background: url(https://admin.corecapital.com.pe/img/br_down.png) no-repeat calc(50%)!important;
+}

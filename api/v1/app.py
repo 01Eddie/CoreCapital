@@ -1,20 +1,26 @@
 #!/usr/bin/python3
 
+from flask import abort, jsonify, make_response, render_template, request, Flask, flash, redirect, url_for
+
+from models.engine.db_storage import DBStorage
+# from web_dynamic import app
+
 # from models import storage
-from flask import Flask, app, render_template, make_response, jsonify
+# from flask import Flask, app, render_template, make_response, jsonify
 from flask_cors import CORS
+from os import getenv
 from os import environ
 from api.v1.views import app_views
 from models import db
 
 app = Flask(__name__)
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+# app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views)
 
 cors = CORS(app, resource={r"/api/v1/*": {"origins": "*"}})
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/prueba_db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/prueba_db'
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 @app.route('/prueba')
 def prueba():

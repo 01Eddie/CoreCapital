@@ -17,4 +17,5 @@ function renderChild (elem, child) {
 
 export function render (elem, DOMelem) {
   DOMelem.appendChild(elem);
+  DOMelem.appendChild(elem);
 }

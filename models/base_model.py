@@ -5,27 +5,26 @@ Contains class BaseModel
 
 from datetime import datetime
 from os import getenv
-# import sqlalchemy
-# from sqlalchemy import Column, String, DateTime
-# from sqlalchemy.ext.declarative import declarative_base
+import sqlalchemy
+from sqlalchemy import Column, String, Integer, DateTime
+from sqlalchemy.ext.declarative import declarative_base
 import uuid
 # import models
-from models import db
+from models import Base
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
-""" if models.storage_t == "db": """
 # Base = declarative_base()
 
 class BaseModel:
     """The BaseModel class from which future classes will be derived"""
-    id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
-    active = db.Column(db.Integer)
-    deleted_at = db.Column(db.DateTime, default=datetime.utcnow)
-    created_by = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_by = db.Column(db.Integer)
-    deleted_by = db.Column(db.Integer)
+    id = Column(Integer, primary_key=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow)
+    # active = Column(Integer)
+    # deleted_at = Column(DateTime, default=datetime.utcnow)
+    # created_by = Column(DateTime, default=datetime.utcnow)
+    # updated_by = Column(Integer)
+    # deleted_by = Column(Integer)
 
 
     def __init__(self, *args, **kwargs):

@@ -1,31 +1,30 @@
 #!/usr/bin/python
 """ holds class User"""
 # import models
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 from os import getenv
-from flask_sqlalchemy import SQLAlchemy
-from models import db
+# from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-# import sqlalchemy
-#from sqlalchemy import Column, String, Integer
-#from sqlalchemy.orm import relationship
+import sqlalchemy
+from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy.orm import relationship
 
-class User(BaseModel, db.Model):
+class User(BaseModel, Base):
     __tablename__ = "Users"
-    # id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(100), nullable=False)
-    lastname = db.Column(db.String(255), nullable=False)
-    email = db.Column(db.String(100), nullable=False)
-    nro_document = db.Column(db.String(25), nullable=False)
-    password = db.Column(db.String(255), nullable=False)
-    phone = db.Column(db.String(20), nullable=False)
-#    active = db.Column(db.Integer, nullable=False)
-#    deleted_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
-#    created_by = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
-#    updated_by = db.Column(db.Integer, nullable=True)
-#    deleted_by = db.Column(db.Integer, nullable=True)
-    id_type_document = db.Column(db.Integer, db.ForeignKey('Type_Document.id'))
- 
+    # id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(100), nullable=False)
+    lastname = Column(String(255), nullable=False)
+    email = Column(String(100), nullable=False)
+    nro_document = Column(String(25), nullable=False)
+    password = Column(String(255), nullable=False)
+    phone = Column(String(20), nullable=False)
+#    active = Column(Integer, nullable=False)
+#    deleted_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+#    created_by = Column(DateTime, default=datetime.utcnow, nullable=False)
+#    updated_by = Column(Integer, nullable=True)
+#    deleted_by = Column(Integer, nullable=True)
+    id_type_document = Column(Integer, ForeignKey('Type_Document.id'))
+
 # modelo
 """
 * `id`      int NOT NULL AUTO_INCREMENT ,
