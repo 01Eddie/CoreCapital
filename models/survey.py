@@ -16,5 +16,5 @@ class Survey(BaseModel, Base):
     name_survey = Column(String(100), nullable=False)
     description = Column(String(255))
     nro_questions = Column(Integer, nullable=False)
-    surveys = relationship("Survey_Section", backref="survey")
+    # surveys = relationship("Survey_Section", backref="survey")
 

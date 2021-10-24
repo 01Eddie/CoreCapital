@@ -17,10 +17,10 @@ class Question(BaseModel, Base):
     __tablename__ = 'Questions'
 
     id_survey_section = Column(Integer, ForeignKey('Survey_Sections.id'))
-    id_survey = name = Column(String(128), nullable=False)
+    id_survey = Column(String(128), nullable=False)
     name_question = Column(String(255), nullable=False)
     description = Column(String(255))
     answer_required = Column(Integer, nullable=False)
     calculated = Column(Integer, nullable=False)
     order = Column(Integer, nullable=False)
-    questions = relationship("Question_Option", backref="Question")
+    # questions = relationship("Question_Option", backref="Question")

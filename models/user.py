@@ -8,6 +8,7 @@ from datetime import datetime
 import sqlalchemy
 from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
+from models.type_document import Type_Document
 
 class User(BaseModel, Base):
     __tablename__ = "Users"

@@ -5,6 +5,11 @@ from flask import abort, jsonify, make_response, render_template, request, Flask
 # from models.engine.db_storage import DBStorage
 # from web_dynamic import app
 
+# /questions/{id}/options
+
+# Question_Options.query.filter(QuetionOptions.question_id == question_id)
+
+
 # from models import storage
 # from flask import Flask, app, render_template, make_response, jsonify
 from flask_cors import CORS

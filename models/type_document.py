@@ -15,4 +15,4 @@ class Type_Document(BaseModel, Base):
 
 #    id = Column(Integer, nullable=False, primary_key=True)
     name = Column(String(45), nullable=False)
-    type_documents = relationship("User", backref="Type_Document")
+    # type_documents = relationship("User", backref="Type_Document")
