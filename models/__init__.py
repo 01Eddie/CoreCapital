@@ -19,6 +19,9 @@ engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
                                              HBNB_MYSQL_PWD,
                                              HBNB_MYSQL_HOST,
                                              HBNB_MYSQL_DB))
+""" from models import Base """
+""" from models.user import User """
+import models
 Base.metadata.create_all(engine)
 sess_factory = sessionmaker(bind=engine, expire_on_commit=False)
 Session = scoped_session(sess_factory)
@@ -47,3 +50,5 @@ session = Session
 # = SQLAlchemy(pp)
 
 # storage
+if __name__ == '__main__':
+       print("================================")

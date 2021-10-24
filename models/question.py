@@ -4,12 +4,12 @@
 from models.base_model import BaseModel
 from os import getenv
 from models import Base
-from flask_sqlalchemy import SQLAlchemy
 
 # import sqlalchemy
-# from sqlalchemy import Column, String
-# from sqlalchemy.orm import relationship
-#from web_dynamic.app import Base
+# from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy.orm import relationship
+# from web_dynamic.app import Base
 
 class Question(BaseModel, Base):
     """ Aqui irá los modelos de datos """

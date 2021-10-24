@@ -5,11 +5,13 @@ from flask import abort, jsonify, make_response, render_template, request, Flask
 from os import environ
 # from flask_mysqldb import MySQL
 from datetime import datetime
+from api.v1.views import question
 import models
 # from models import app
 # from models import db
 # from flask_sqlalchemy import SQLAlchemy
 from models.user import User
+from models.question import Question
 from flask_cors import CORS
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
@@ -90,7 +92,11 @@ def modal():
 
 @app.route("/question", methods=['GET', 'POST'], strict_slashes=False)
 def questions():
-    return render_template('questions.html')
+    if request.method == 'POST':
+        
+        my_question = Question(question)
+        print("Questions")
+        return render_template('questions.html')
 
 @app.errorhandler(404)
 def not_found(error):
