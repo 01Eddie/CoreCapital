@@ -1,9 +1,10 @@
 #!/usr/bin/python
 """ holds class Question"""
-#import models
+import models
+from models import Base
+# from models.question_option import Question_Option
 from models.base_model import BaseModel
 from os import getenv
-from models import Base
 
 # import sqlalchemy
 # from flask_sqlalchemy import SQLAlchemy
@@ -22,4 +23,4 @@ class Question(BaseModel, Base):
     answer_required = Column(Integer, nullable=False)
     calculated = Column(Integer, nullable=False)
     order = Column(Integer, nullable=False)
-    questions = relationship("Question_Option", backref="Questions")
+    questions = relationship("Question_Option", backref="Question")

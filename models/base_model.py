@@ -9,7 +9,7 @@ import sqlalchemy
 from sqlalchemy import Column, String, Integer, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 import uuid
-# import models
+import models
 from models import Base
 
 time = "%Y-%m-%dT%H:%M:%S.%f"

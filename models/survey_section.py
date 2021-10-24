@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """This module defines a class Survey_Section"""
-
+from models import Base
 from models.base_model import BaseModel
 from flask_sqlalchemy import SQLAlchemy
-from models import Base
-#from sqlalchemy import Column, Integer, String
-#from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 
 
 class Survey_Section(BaseModel, Base):

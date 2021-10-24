@@ -1,9 +1,9 @@
 #!/usr/bin/python
 """ holds class Amenity"""
 import models
+from models import Base
 from models.base_model import BaseModel
 from os import getenv
-from models import Base
 # import sqlalchemy
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
@@ -16,7 +16,7 @@ class Data(BaseModel, Base):
     correo: a
     telefono: a
         """
-    __tablename__ = ''
+    __tablename__ = 'Data'
     name = Column(String(128), nullable=False)
     lastname = Column(String(128), nullable=False)
 

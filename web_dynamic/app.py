@@ -11,7 +11,7 @@ import models
 # from models import db
 # from flask_sqlalchemy import SQLAlchemy
 from models.user import User
-from models.question import Question
+# from models.question import Question
 from flask_cors import CORS
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
@@ -92,11 +92,10 @@ def modal():
 
 @app.route("/question", methods=['GET', 'POST'], strict_slashes=False)
 def questions():
-    if request.method == 'POST':
-        
-        my_question = Question(question)
-        print("Questions")
-        return render_template('questions.html')
+    # if request.method == 'POST':    
+    # my_question = Question(question)
+    # print("Questions")
+    return render_template('questions.html')
 
 @app.errorhandler(404)
 def not_found(error):

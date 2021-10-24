@@ -23,7 +23,7 @@ def number_objects():
     names = ["data", "question"]
 
     num_objs = {}
-    for i in range(len(classes)):
-        num_objs[names[i]] = storage.count(classes[i])
+    # for i in range(len(classes)):
+        # num_objs[names[i]] = storage.count(classes[i])
 
     return jsonify(num_objs)

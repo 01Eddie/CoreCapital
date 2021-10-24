@@ -2,13 +2,14 @@
 """ This module defines a class Question_Option"""
 
 #import models
-from models.base_model import BaseModel
-from flask_sqlalchemy import SQLAlchemy
 from models import Base
+from models.base_model import BaseModel
+from models.question import Question
+from flask_sqlalchemy import SQLAlchemy
+# from models.answer import Answer
 #import sqlalchemy
-#from sqlalchemy import Column, Integer, String
-#from sqlalchemy.orm import relationship
-
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 
 class Question_Option(BaseModel, Base):
     """This class defines a question_option by various attributes"""
@@ -20,4 +21,4 @@ class Question_Option(BaseModel, Base):
     name_option = Column(String(200), nullable=False)
     value = Column(Integer)
     order = Column(Integer, nullable=False)
-    answers = relationship("Answer", cascade="all", backref="Question_Options")
+    answers = relationship("Answer", cascade="all", backref="Question_Option")
