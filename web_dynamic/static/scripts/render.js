@@ -6,6 +6,8 @@ const url = 'http://localhost:5001/api/v1/surveys/1/sections/1/questions/1';
 
 $.get(url, function (res) {
   const nameQuestion = res.name_question;
+  $();
+
   console.log(nameQuestion);
 });
 
