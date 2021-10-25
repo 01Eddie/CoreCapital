@@ -22,6 +22,7 @@ export function appendRender (elem, DOMelem) {
 }
 
 export function Render (elem, DOMelem) {
+  console.log(elem, DOMelem);
   DOMelem.appendChild(elem);
   DOMelem.appendChild(elem);
 }

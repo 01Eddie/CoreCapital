@@ -5,6 +5,7 @@ from models.user import User
 from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
 from flasgger.utils import swag_from
+from models import session
 
 
 @app_views.route('/user', methods=['GET'], strict_slashes=False)
@@ -14,7 +15,8 @@ def get_users():
     Retrieves the list of all user objects
     or a specific user
     """
-    all_users = User.query.all()
+    all_users = session.query(User).all()
+    # all_users = User.query.all()
     list_users = []
     for user in all_users:
         list_users.append(user.to_dict())
