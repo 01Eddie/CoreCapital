@@ -77,6 +77,7 @@ VALUES (1,1,'admin','admin','admin@gmail.com','11111111','999999999',1,'2021-10-
         session.commit()
         print(user.id)
         return redirect(url_for('modal'))
+        # return render_template('modal.html')
 
 
 
@@ -87,7 +88,8 @@ def modal():
 
 # @app.route("/modal", methods=['GET', 'POST'], strict_slashes=False)
 # def modal():
-#     return redirect(url_for('question'))
+#     # return redirect(url_for('question'))
+#     return redirect(url_for('modal.html'))
 
 @app.route("/question", methods=['GET', 'POST'], strict_slashes=False)
 def questions():
