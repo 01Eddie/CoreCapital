@@ -73,8 +73,21 @@ form.addEventListener('submit', function (e) {
   e.preventDefault();
 
   checkRequired([username, userlastname, email, phone]);
-  checkLength(username, 3, 15);
-  checkLength(password, 6, 20);
+  // checkLength(username, 3, 15);
+  // checkLength(password, 6, 20);
   checkEmail(email);
-  checkPasswordsMatch(password, password_confirmation);
+  // checkPasswordsMatch(password, password_confirmation);
+
+  form.submit();
+
+  // $.ajax({
+  //      type: 'POST',
+  //      url: './models.html',
+  //      data: { nom: pnom, pass: ppass } // Datos que se envían
+  //      }).done(function( msg ) {  // Función que se ejecuta si todo ha ido bien
+  //       $("#consola").html(msg);  // Escribimos en el div consola el mensaje devuelto
+  //      }).fail(function (jqXHR, textStatus, errorThrown){ // Función que se ejecuta si algo ha ido mal
+  //      // Mostramos en consola el mensaje con el error que se ha producido
+  //      $("#consola").html("The following error occured: "+ textStatus +" "+ errorThrown);
+  //     });
 });

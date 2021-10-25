@@ -3,13 +3,10 @@
 # from models import storage
 from flask import abort, jsonify, make_response, render_template, request, Flask, flash, redirect, url_for
 from os import environ
-# from flask_mysqldb import MySQL
 from datetime import datetime
 from api.v1.views import question
 import models
-# from models import app
-# from models import db
-# from flask_sqlalchemy import SQLAlchemy
+from models import session
 from models.user import User
 # from models.question import Question
 from flask_cors import CORS
@@ -17,10 +14,7 @@ from flask_cors import CORS
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
 app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/prueba_db'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
-# db = SQLAlchemy(app)
 
 # Mysql Connection
 app.config['MYSQL_HOST'] = 'localhost'
@@ -29,19 +23,20 @@ app.config['MYSQL_PASSWORD'] = 'survey_pwd'
 app.config['MYSQL_DB'] = 'cp_survey_db'
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
-# mysql = MySQL(app)
-# mysql = SQLAlchemy(appa)
 
 # settings
 app.secret_key = "mysecretkey"
-
 
 """ cors = CORS(app, resource={r"/api/v1/*": {"origins": "*"}}) """
 
 # @app.teardown_appcontext
 # def close_db(error):
-#     """ Close Storage """
-#     storage.close()
+#     try:
+#         print(error)
+#         """ Close Storage """
+#         session.close()
+#     except:
+#         raise
 
 @app.route("/", methods=['GET'], strict_slashes=False)
 def hello_world():
@@ -58,8 +53,8 @@ def add_form():
             3: Carnet de Extranjería]
         """
         print(data)
-        nmro_document = data['nmro_document']
-        numero_documento = data['numero_documento']
+        type_document = int(data['type_document'])
+        nro_document = data['nro_document']
         name = data['name']
         lastname = data['lastname']
         email = data['email']
@@ -70,15 +65,17 @@ def add_form():
         created_by = '0'
         """ INSERT INTO `Users` (`id_user`,`id_type_doc`,`name`,`lastname`,`email`,`nro_document`,`phone`,`active`,`created_at`,`created_by`)
 VALUES (1,1,'admin','admin','admin@gmail.com','11111111','999999999',1,'2021-10-18 02:17:06',1) """
-        # cur = mysql.connection.cursor()
-        # cur.execute("INSERT INTO Type_Document (id_type_doc, nro_document, active) VALUES (%s,%s,%s)", (numero_documento, nmro_document, active))
-        # cur.execute("INSERT INTO Users (id_type_doc, name, lastname, email, nro_document, phone, active, created_at, created_by) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)", (numero_documento, name, lastname, email, nmro_document, phone, active, created_at, created_by))
-        # mysql.connection.commit()
-        # flash('Added inversors successfully')
-        user = User(name = "Jose")
-        # db.session.add(user)
-        # db.session.commit()
-        print(User.id)
+        user = User(
+            name=name,
+            lastname=lastname,
+            email=email,
+            id_type_document=type_document,
+            nro_document=nro_document,
+            phone=phone
+            )
+        session.add(user)
+        session.commit()
+        print(user.id)
         return redirect(url_for('modal'))
 
 
@@ -106,7 +103,6 @@ def not_found(error):
         description: a resource was not found
     """
     return make_response(jsonify({'error': "Not found"}), 404)
-
 
 if __name__ == "__main__":
     """ Main Function """

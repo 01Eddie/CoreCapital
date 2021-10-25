@@ -17,7 +17,7 @@ class User(BaseModel, Base):
     lastname = Column(String(255), nullable=False)
     email = Column(String(100), nullable=False)
     nro_document = Column(String(25), nullable=False)
-    password = Column(String(255), nullable=False)
+    password = Column(String(255), nullable=True)
     phone = Column(String(20), nullable=False)
 #    active = Column(Integer, nullable=False)
 #    deleted_at = Column(DateTime, default=datetime.utcnow, nullable=False)

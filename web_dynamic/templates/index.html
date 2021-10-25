@@ -35,34 +35,34 @@
                                     <button class="close" type="button" data-dismiss="modal">&times;</button>
                                     <h1 class="modal-title">INSCRÍBETE</h1>
                                 </div>
-                                <form id="fomr" action="{{url_for('add_form')}}" method="POST">
+                                <form id="form" action="{{url_for('add_form')}}" method="POST">
                                 <div class="modal-body">
                                     <div class="formulario">
                                             <div class="row x-gap-contacto y-gap-contacto">
                                                 <div class="col-lg-6">
                                                     <div class="js-input-group">
-                                                        <input type="text" id="username" class="minimal" name="name" placeholder="¿Cuál es tu nombre?" required />
+                                                        <input type="text" id="username" class="minimal" name="name" placeholder="¿Cuál es tu nombre?"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="js-input-group">
-                                                        <input type="text" id="userlastname" class="minimal" name="lastname" placeholder="¿Cuál es tu apellido?" required />
+                                                        <input type="text" id="userlastname" class="minimal" name="lastname" placeholder="¿Cuál es tu apellido?"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="js-input-group">
-                                                        <input type="email" id="email" class="minimal" name="email" placeholder="Correo Electrónico" required />
+                                                        <input type="email" id="email" class="minimal" name="email" placeholder="Correo Electrónico"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="js-input-group">
-                                                        <input type="text" id="phone" class="minimal num-text" name="phone"  placeholder="Teléfono / Celular" required />
+                                                        <input type="text" id="phone" class="minimal num-text" name="phone"  placeholder="Teléfono / Celular"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 br">
                                                     <div class="js-input-group">
-                                                        <select class="minimal mr-0" name="nmro_document" data-requerido>
-                                                            <option value="0" disabled>Documento</option>
+                                                        <select class="minimal mr-0" name="type_document">
+                                                            <option value="0">Documento</option>
                                                             <option id="1" value="1">DNI</option>
                                                             <option id="2" value="2">Pasaporte</option>
                                                             <option id="3" value="3">Carnet de Extranjería</option>
@@ -71,7 +71,7 @@
                                                 </div>
                                                 <div class="col-lg-3 bl">
                                                     <div class="js-input-group">
-                                                        <input class="mr-1" type="text" name="numero_documento" placeholder="Numero #" required>
+                                                        <input class="mr-1" type="text" name="nro_document" placeholder="Numero #">
                                                     </div>
                                                 </div>
                                             </div>
@@ -86,7 +86,7 @@
                                             </a>
                                         </span>
                                         <!-- <a href="#" class="js-option-politicas option-politicas -cheked">  </a> -->
-                                        <input class="option-politicas" type="radio" id="html" name="fav_language" value="HTML" multiple>
+                                        <input class="option-politicas" type="radio" id="html" name="fav_language" value="HTML" multiple required>
                                         <!-- <a href="#" class="enviar black -lg button fw-600 js-enviar-form sm:mt-16 sm:d-block"> -->
                                             <button type="submit" class="btn-submit enviar">
                                                 Enviar Datos

@@ -27,7 +27,7 @@ from models.user import User
 Base.metadata.create_all(engine)
 sess_factory = sessionmaker(bind=engine, expire_on_commit=False)
 Session = scoped_session(sess_factory)
-session = Session
+session = Session()
 
 # from flask import abort, jsonify, make_response, render_template, request, Flask, flash, redirect, url_for
 # from os import getenv
