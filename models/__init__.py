@@ -4,6 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
+
 """
 initialize the models package
 """
@@ -19,10 +20,8 @@ engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
                                              HBNB_MYSQL_PWD,
                                              HBNB_MYSQL_HOST,
                                              HBNB_MYSQL_DB))
-""" from models import Base """
-""" from models.user import User """
-import models
 from models.user import User
+from models.question import Question
 
 Base.metadata.create_all(engine)
 sess_factory = sessionmaker(bind=engine, expire_on_commit=False)

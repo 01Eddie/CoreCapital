@@ -79,6 +79,8 @@ VALUES (1,1,'admin','admin','admin@gmail.com','11111111','999999999',1,'2021-10-
         return redirect(url_for('modal'))
 
 
+
+
 @app.route("/modal", methods=['GET', 'POST'], strict_slashes=False)
 def modal():
     return render_template('modal.html')
