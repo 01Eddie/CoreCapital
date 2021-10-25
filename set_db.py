@@ -1,9 +1,13 @@
 #!/usr/bin/python3
 from models import session
+from models import Base, engine
 from models.survey import Survey
 from models.question import Question
 from models.survey_section import Survey_Section
 from models.question_option import Question_Option
+
+Base.metadata.drop_all(engine)
+Base.metadata.create_all(engine)
 
 survey=Survey(
     name_survey='Encuesta Perfil de Riesgo',
@@ -11,6 +15,7 @@ survey=Survey(
     nro_questions=39
     )
 session.add(survey)
+session.commit()
 # VALUES (1,'Encuesta Perfil de Riesgo','Cuestionario Integrado Perfil de riesgo y Evaluacion de Producto',39,1,'2021-10-18 02:17:07',1);
 
 
@@ -20,12 +25,15 @@ surv_sec = Survey_Section(
     description=''
 )
 session.add(surv_sec)
+session.commit()
 
 surv_sec_2 = Survey_Section(
     id_survey=survey.id,
     name_section='Evaluación de Producto',
     description='Imagina que tu asesor financiero te ofrezca una oportunidad de invertir en Bonos de Financiamiento de Terrenos.<BR />Se trata de un bono a tasa fija que invierte en la compra de terrenos donde se desarrollarán proyectos inmobiliarios de empresas de prestigio.<BR />Estos bonos están respaldados con la garantía hipotecaria del terreno, la cual equivale entre el 100% y 125% de la inversión y se haría efectiva en caso de impago.<BR />El bono tiene un plazo promedio de 15 meses y el monto mínimo de inversión es de US$ 100,000.<BR />Se paga intereses trimestralmente calculados a una tasa anual de 6.5% en dólares para una inversión inferior a US$ 200,000 y de 7.5% para una inversión igual o superior a ese monto.'
 )
+session.add(surv_sec_2)
+session.commit()
 # Survey_Section(
 #     id_survey=survey.id,
 #     name_section='Preferencias',
@@ -48,30 +56,33 @@ q1 = Question(
     calculated=12,
     order=1
 )
-Question_Option(
+session.add(q1)
+session.commit()
+session.add(Question_Option(
     id_question=q1.id,
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='Respuesta 1',
     value=2,
     order=1
-)
-Question_Option(
+))
+session.add(Question_Option(
     id_question=q1.id,
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='Respuesta 2',
     value=2,
     order=2
-)
-Question_Option(
+))
+session.add(Question_Option(
     id_question=q1.id,
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='Respuesta 3',
     value=2,
     order=3
-)
+))
+session.commit()
 # INSERT INTO `Question_Options` (`id_question_option`,`id_question`,`id_survey`,`id_survey_section`,`name_option`,`value`,`active`,`order`)
 # VALUES (1,1,1,1,'1. Masculino',1,1,1),(2,1,1,1,'2. Femenino',2,1,2),
 # (3,2,1,1,'1. Sí.',3,1,3),(4,2,1,1,'2. No.',4,1,4),
@@ -88,30 +99,33 @@ q2 = Question(
     calculated=4,
     order=2
 )
-Question_Option(
+session.add(q2)
+session.commit()
+session.add(Question_Option(
     id_question=q2.id,
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='Respuesta 1',
     value=2,
     order=1
-)
-Question_Option(
+))
+session.add(Question_Option(
     id_question=q2.id,
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='Respuesta 2',
     value=2,
     order=2
-)
-Question_Option(
+))
+session.add(Question_Option(
     id_question=q2.id,
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='Respuesta 3',
     value=2,
     order=3
-)
+))
+session.commit()
 
 q3 = Question(
     id_survey_section=surv_sec_2.id,
@@ -122,30 +136,33 @@ q3 = Question(
     calculated=6,
     order=1
 )
-Question_Option(
+session.add(q3)
+session.commit()
+session.add(Question_Option(
     id_question=q3.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='Respuesta 1',
     value=2,
     order=1
-)
-Question_Option(
+))
+session.add(Question_Option(
     id_question=q3.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='Respuesta 2',
     value=2,
     order=2
-)
-Question_Option(
+))
+session.add(Question_Option(
     id_question=q3.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='Respuesta 3',
     value=2,
     order=3
-)
+))
+session.commit()
 
 q4 = Question(
     id_survey_section=surv_sec_2.id,
@@ -156,30 +173,33 @@ q4 = Question(
     calculated=8,
     order=2
 )
-Question_Option(
+session.add(q4)
+session.commit()
+session.add(Question_Option(
     id_question=q4.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='Respuesta 1',
     value=2,
     order=1
-)
-Question_Option(
+))
+session.add(Question_Option(
     id_question=q4.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='Respuesta 2',
     value=2,
     order=2
-)
-Question_Option(
+))
+session.add(Question_Option(
     id_question=q4.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='Respuesta 3',
     value=2,
     order=3
-)
+))
+session.commit()
 
 q5 = Question(
     id_survey_section=surv_sec_2.id,
@@ -190,23 +210,24 @@ q5 = Question(
     calculated=23,
     order=3
 )
-Question_Option(
+session.add(q5)
+session.commit()
+session.add(Question_Option(
     id_question=q5.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='Respuesta 1',
     value=2,
     order=1
-)
-Question_Option(
+))
+session.add(Question_Option(
     id_question=q5.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='Respuesta 2',
     value=2,
     order=2
-)
-
+))
 session.commit()
 
 ##############################################
