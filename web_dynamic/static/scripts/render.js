@@ -1,9 +1,9 @@
-import { createElement, render } from './libreria.js';
+import { createElement, render, appendRender } from './libreria.js';
 
 const Logo = createElement('img', {
   className: 'logo',
   alt: 'Logo',
-  src: './images/logo.png'
+  src: '../images/CorePartners_LogoRGB_positivo.png'
 });
 
 const Nav = createElement('nav', { class: 'main-nav' });

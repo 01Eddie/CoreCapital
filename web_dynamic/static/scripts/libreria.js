@@ -1,3 +1,4 @@
+
 export function createElement (type, attrList = {}, children = []) {
   const elem = document.createElement(type);
   const keys = Object.keys(attrList);
@@ -15,7 +16,12 @@ function renderChild (elem, child) {
   elem.appendChild(child);
 }
 
-export function render (elem, DOMelem) {
+export function appendRender (elem, DOMelem) {
+  DOMelem.appendChild(elem);
+  DOMelem.appendChild(elem);
+}
+
+export function Render (elem, DOMelem) {
   DOMelem.appendChild(elem);
   DOMelem.appendChild(elem);
 }
