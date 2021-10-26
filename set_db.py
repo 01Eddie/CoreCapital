@@ -5,9 +5,29 @@ from models.survey import Survey
 from models.question import Question
 from models.survey_section import Survey_Section
 from models.question_option import Question_Option
+from models.type_document import Type_Document
 
 Base.metadata.drop_all(engine)
 Base.metadata.create_all(engine)
+
+typeDNI = Type_Document(
+    name = 'DNI'
+)
+session.add(typeDNI)
+session.commit()
+
+typePass = Type_Document(
+    name = 'Pasaporte'
+)
+session.add(typePass)
+session.commit()
+
+typeCarnet = Type_Document(
+    name = 'Carnet de Extranjería'
+)
+session.add(typeCarnet)
+session.commit()
+
 
 survey=Survey(
     name_survey='Encuesta Perfil de Riesgo',
