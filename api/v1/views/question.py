@@ -14,7 +14,9 @@ def all_question():
     list_question = []
     for question in all_questions:
         questionOpt = question.to_dict()
-        questionOpt["answer_options"] = [op.to_dict() for op in question.answer_options]
+        # if not question.answer_options:
+        #     print(question.name_question)
+        questionOpt["answer_options"] = [op.to_dict() for op in question.answer_options] if question.answer_options else []
         # print(question.answer_options)
         list_question.append(questionOpt)
     return jsonify(list_question)
@@ -28,7 +30,7 @@ def question(survey_id, section_id, questions_order):
     question = session.query(Question).filter(Question.id_survey==survey_id).filter(Question.id_survey_section==section_id).filter(Question.order==questions_order).first()
     if question is None:
         return jsonify( {"error": "Not found"}), 404
-    print(question)
+    # print(question)
     questionOpt = question.to_dict()
     questionOpt["answer_options"] = [op.to_dict() for op in question.answer_options]
     return jsonify(questionOpt)
