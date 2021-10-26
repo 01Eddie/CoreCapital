@@ -16,7 +16,7 @@ class Question(BaseModel, Base):
 
     id_survey_section = Column(Integer, ForeignKey(Survey_Section.id))
     id_survey = Column(String(128), nullable=False)
-    name_question = Column(String(255), nullable=False)
+    name_question = Column(String(600), nullable=False)
     description = Column(String(255))
     answer_required = Column(Integer, nullable=False)
     calculated = Column(Integer, nullable=False)
