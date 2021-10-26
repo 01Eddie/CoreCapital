@@ -4,9 +4,9 @@ const url = 'http://localhost:5001/api/v1/surveys/1/sections/2/questions/4';
 
 /* console.log(url); */
 const questions_url = 'http://localhost:5001/api/v1/questions';
-/* console.log("API QUESTIONS");
-console.log(questions_url); */
-/* $.get(url, function (res) {
+// console.log("API QUESTIONS");
+// console.log(questions_url);
+$.get(url, function (res) {
   const nameQuestion = res.name_question;
   const options = res.answer_options;
   $('#p_question').text(nameQuestion);
@@ -14,9 +14,11 @@ console.log(questions_url); */
   options.forEach((el) => {
     $('#text-buttons').append(`<button type="button" class="botones btn-light">${el.name_option}</button>`);
   });
-}); */
-
-$.get(questions_url, function (res) {
-  
-  console.log(res);
 });
+
+setTimeout(
+  function () {
+    $.get(questions_url, function (res) {
+      console.log(res);
+    });
+  }, 0);
