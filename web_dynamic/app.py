@@ -10,6 +10,7 @@ from models import session
 from models.user import User
 # from models.question import Question
 from flask_cors import CORS
+from flask import session as flask_session
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
@@ -75,7 +76,7 @@ VALUES (1,1,'admin','admin','admin@gmail.com','11111111','999999999',1,'2021-10-
             )
         session.add(user)
         session.commit()
-        print(user.id)
+        flask_session['user_id']=user.id
         return redirect(url_for('modal'))
         # return render_template('modal.html')
 
@@ -96,7 +97,8 @@ def questions():
     # if request.method == 'POST':    
     # my_question = Question(question)
     # print("Questions")
-    return render_template('questions.html')
+    user_id = flask_session.get('user_id')
+    return render_template('questions.html', user_id=user_id)
 
 @app.errorhandler(404)
 def not_found(error):
