@@ -13,7 +13,10 @@ def all_question():
     all_questions = session.query(Question).all()
     list_question = []
     for question in all_questions:
-        list_question.append(question.to_dict())
+        questionOpt = question.to_dict()
+        questionOpt["answer_options"] = [op.to_dict() for op in question.answer_options]
+        # print(question.answer_options)
+        list_question.append(questionOpt)
     return jsonify(list_question)
 
 
@@ -22,13 +25,15 @@ def question(survey_id, section_id, questions_order):
     """
     Return all questions
     """
-    surveys = session.query(Question).filter(Question.id_survey==survey_id).filter(Question.id_survey_section==section_id).filter(Question.order==questions_order).first()
-    if surveys is None:
+    question = session.query(Question).filter(Question.id_survey==survey_id).filter(Question.id_survey_section==section_id).filter(Question.order==questions_order).first()
+    if question is None:
         return jsonify( {"error": "Not found"}), 404
-    print(surveys)
-    return jsonify(surveys.to_dict())
+    print(question)
+    questionOpt = question.to_dict()
+    questionOpt["answer_options"] = [op.to_dict() for op in question.answer_options]
+    return jsonify(questionOpt)
 
-# @app_views.route('/surveys/<survey_id>/sections/<section_id>/questions/<questions_order>', methods=['POST'], strict_slashes=False)
+# @app_views.route('/surveys/<survey_id>/sections/<section_id>/questions/<questions_order>', methods=['POST'], strict_slashes=False)questionOpt
 # """
 # Save the questions answers
 # """

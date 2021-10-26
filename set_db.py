@@ -255,7 +255,7 @@ session.commit()
 #PREGUNTA 1
 # (5,2,1,'P1. En comparación con otras personas, ¿Cómo calificas tu disposición a asumir riesgos financieros?',1,1,1,1)
 q5 = Question(
-    id_survey_section=surv_sec.id,
+    id_survey_section=surv_sec_2.id,
     id_survey=survey.id,
     name_question='P1. En comparación con otras personas, ¿Cómo calificas tu disposición a asumir riesgos financieros?',
     description='',
@@ -343,7 +343,7 @@ session.commit()
 #PREGUNTA 2
 # (6,2,1,'P2. Cuando piensas en la palabra \'riesgo\' en un contexto financiero, ¿Cuál de las siguientes palabras viene a tu mente primero?',1,1,1,2)
 q6 = Question(
-    id_survey_section=surv_sec.id,
+    id_survey_section=surv_sec_2.id,
     id_survey=survey.id,
     name_question='P2. Cuando piensas en la palabra \'riesgo\' en un contexto financiero, ¿Cuál de las siguientes palabras viene a tu mente primero?',
     description='',
@@ -779,7 +779,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='2',
-    value=1,
+    value=2,
     order=2
 ))
 session.add(Question_Option(
@@ -787,7 +787,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='3',
-    value=1,
+    value=3,
     order=3
 ))
 session.add(Question_Option(
@@ -795,7 +795,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='4',
-    value=1,
+    value=4,
     order=4
 ))
 session.add(Question_Option(
@@ -803,7 +803,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='5',
-    value=1,
+    value=5,
     order=5
 ))
 session.add(Question_Option(
@@ -811,7 +811,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='6',
-    value=1,
+    value=6,
     order=6
 ))
 session.add(Question_Option(
@@ -819,7 +819,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='7',
-    value=1,
+    value=7,
     order=7
 ))
 session.commit()
@@ -849,7 +849,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='2. Posibilidad de pérdida muy baja.',
-    value=1,
+    value=2,
     order=2
 ))
 session.add(Question_Option(
@@ -857,7 +857,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='3. Posibilidad de pérdida moderadamente baja.',
-    value=1,
+    value=3,
     order=3
 ))
 session.add(Question_Option(
@@ -865,7 +865,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='4. 50% de probabilidad de pérdida.',
-    value=1,
+    value=4,
     order=4
 ))
 session.commit()
@@ -887,7 +887,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='1. Siempre hacia un riesgo menor.',
-    value=2,
+    value=1,
     order=1
 ))
 session.add(Question_Option(
@@ -903,7 +903,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='3. Sin cambios o cambios sin una dirección clara.',
-    value=2,
+    value=3,
     order=3
 ))
 session.add(Question_Option(
@@ -911,7 +911,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='4. Principalmente hacia un mayor riesgo.',
-    value=2,
+    value=4,
     order=4
 ))
 session.add(Question_Option(
@@ -919,7 +919,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='5. Siempre hacia mayor riesgo.',
-    value=2,
+    value=5,
     order=5
 ))
 session.commit()

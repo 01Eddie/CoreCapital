@@ -2,9 +2,9 @@
 """ holds class Question"""
 import models
 from models import Base
-# from models.question_option import Question_Option
 from models.base_model import BaseModel
 from models.survey_section import Survey_Section
+from models.question_option import Question_Option
 from os import getenv
 
 from sqlalchemy import Column, String, Integer, ForeignKey
@@ -21,4 +21,5 @@ class Question(BaseModel, Base):
     answer_required = Column(Integer, nullable=False)
     calculated = Column(Integer, nullable=False)
     order = Column(Integer, nullable=False)
-    # questions = relationship("Question_Option", backref="Question")
+    answer_options = relationship(Question_Option, backref="question")
+    
