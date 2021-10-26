@@ -142,7 +142,6 @@ session.add(Question_Option(
     value=5,
     order=5
 ))
-
 # (6,4,1,1,'2. No.',6,1,6)
 session.add(Question_Option(
     id_question=qf1.id,
@@ -168,9 +167,52 @@ qf2 = Question(
 )
 session.add(qf2)
 session.commit()
-# (7,5,1,2,'1. Extremadamente bajo.',1,1,1),(8,5,1,2,'2. Muy bajo.',2,1,2),(9,5,1,2,'3. Bajo.',3,1,3),(10,5,1,2,'4. Promedio.',4,1,4),(11,5,1,2,'5. Alto.',5,1,5)
+# (7,5,1,2,'1. Extremadamente bajo.',1,1,1)
+session.add(Question_Option(
+    id_question=qf2.id,
+    id_survey=survey.id,
+    id_survey_section=surv_sec.id,
+    name_option='1. Extremadamente bajo.',
+    value=1,
+    order=1
+))
+# (8,5,1,2,'2. Muy bajo.',2,1,2)
+session.add(Question_Option(
+    id_question=qf2.id,
+    id_survey=survey.id,
+    id_survey_section=surv_sec.id,
+    name_option='2. Muy bajo.',
+    value=2,
+    order=2
+))
+# (9,5,1,2,'3. Bajo.',3,1,3)
+session.add(Question_Option(
+    id_question=qf2.id,
+    id_survey=survey.id,
+    id_survey_section=surv_sec.id,
+    name_option='3. Bajo.',
+    value=3,
+    order=3
+))
+# (10,5,1,2,'4. Promedio.',4,1,4)
+session.add(Question_Option(
+    id_question=qf2.id,
+    id_survey=survey.id,
+    id_survey_section=surv_sec.id,
+    name_option='4. Promedio.',
+    value=4,
+    order=4
+))
+# (11,5,1,2,'5. Alto.',5,1,5)
+session.add(Question_Option(
+    id_question=qf2.id,
+    id_survey=survey.id,
+    id_survey_section=surv_sec.id,
+    name_option='5. Alto.',
+    value=5,
+    order=5
+))
 # (12,5,1,2,'6. Muy alto.',6,1,6)
-# (13,5,1,2,'7. Extremadamente alto.',7,1,7)
 session.add(Question_Option(
     id_question=qf2.id,
     id_survey=survey.id,
@@ -179,7 +221,7 @@ session.add(Question_Option(
     value=6,
     order=6
 ))
-
+# (13,5,1,2,'7. Extremadamente alto.',7,1,7)
 session.add(Question_Option(
     id_question=qf2.id,
     id_survey=survey.id,
@@ -223,7 +265,6 @@ session.add(Question_Option(
     order=2
 ))
 # (9,5,1,2,'3. Bajo.',3,1,3)
-# (10,5,1,2,'4. Promedio.',4,1,4),(11,5,1,2,'5. Alto.',5,1,5),(12,5,1,2,'6. Muy alto.',6,1,6),(13,5,1,2,'7. Extremadamente alto.',7,1,7)
 # (`id`,`id_question`,`id_survey`,`id_survey_section`,`name_option`,`value`,`active`,`order`)
 session.add(Question_Option(
     id_question=q1.id,
