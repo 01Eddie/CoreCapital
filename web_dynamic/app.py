@@ -100,12 +100,12 @@ def questions():
     user_id = flask_session.get('user_id')
     return render_template('questions.html', user_id=user_id)
 
-@app.route("/question/<int:id>", methods=['POST'])
+""" @app.route("/question/<int:id>", methods=['POST'])
 def options_question(id):
     if request.method == 'POST':
         data = request.form
         print(data)
-    return "HELLO"
+    return "HELLO" """
 
 @app.errorhandler(404)
 def not_found(error):
