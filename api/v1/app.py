@@ -16,6 +16,7 @@ from flask_cors import CORS
 from os import getenv
 from os import environ
 from api.v1.views import app_views
+from models import session
 # from models import db
 
 app = Flask(__name__)
@@ -27,14 +28,14 @@ cors = CORS(app, resource={r"/api/v1/*": {"origins": "*"}})
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/prueba_db'
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
-@app.route('/prueba')
-def prueba():
-    return "hello"
+# @app.route('/prueba')
+# def prueba():
+#     return "hello"
 
-# @app.teardown_appcontext
-# def close_db(error):
-#     """ Close Storage """
-#     storage.close()
+@app.teardown_appcontext
+def close_db(error):
+    """ Close Storage """
+    session.close()
 
 
 @app.errorhandler(404)
