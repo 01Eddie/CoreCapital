@@ -22,6 +22,7 @@ engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
                                              HBNB_MYSQL_DB))
 from models.user import User
 from models.question import Question
+from models.answer import Answer
 
 Base.metadata.create_all(engine)
 sess_factory = sessionmaker(bind=engine, expire_on_commit=False)

@@ -24,7 +24,6 @@ function filterAnswer (question) {
 }
 
 function sendAnswers (answers) {
-  console.log(answers);
   $.ajax({
     type: 'POST',
     data: JSON.stringify(answers),
@@ -39,7 +38,9 @@ function sendAnswers (answers) {
       alert('Petición realizada');
     }
   });
+  console.log(answers);
 }
+
 
 function render_question (res) {
   const name_section = res.section_name;
@@ -64,7 +65,7 @@ function render_question (res) {
       answers.push(answer);
       count = count + question.answer.value;
       // console.log(question.answer.value);
-      // console.log(`Resultado: ${count}`);
+      console.log(`Resultado: ${count}`);
       if (question.answer.survey_is_over == 1) {
         console.log('pop_up');
         // if (question.id == 11){
