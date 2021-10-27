@@ -13,6 +13,9 @@ def save_answers():
     """
     print(request.get_json())
     print('despues de request')
+    print(request.data)
+
+
 
 #     all_questions = session.query(Question).all()
 #     list_question = []

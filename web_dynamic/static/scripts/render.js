@@ -1,12 +1,8 @@
 // import { createElement, Render, appendRender } from '../scripts/libreria.js';
 
 const url = 'http://localhost:5001/api/v1/surveys/1/sections/1/questions/1';
-
-// console.log(url);
 const questions_url = 'http://localhost:5001/api/v1/questions';
 const answer_url = 'http://localhost:5001/api/v1/answers';
-// console.log("API QUESTIONS");
-// console.log(questions_url);
 
 const answers = [];
 let questions = [];
@@ -15,14 +11,12 @@ let count = 0;
 
 function sendAnswer () {
   console.log('enviado');
-  // $.post(answer_url, {answers}, (data)=>console.log(data))
   console.log(answers);
   $.ajax({
-    url: answer_url,
-    // data : JSON.stringify(answers),
-    data: JSON.stringify({ objeto: 'valor' }),
     type: 'POST',
-    dataType: 'json',
+    data: JSON.stringify(answers),
+    url: answer_url,
+    contentType: 'application/json; charset=utf-8',
     success: function (json) {
       console.log('enviado desde render');
       console.log(json);
@@ -70,10 +64,6 @@ function render_question (res) {
         sendAnswer();
         return;
       }
-      // if (currentIndex == questions.length - 1) {
-      //   console.log('pop_up');
-      //   return;
-      // }
       render_question(questions[currentIndex]);
     }, false);
   });
