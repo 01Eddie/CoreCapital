@@ -19,7 +19,7 @@ class Answer(BaseModel, Base):
     name = Column(String(128), nullable=False)
     lastname = Column(String(128), nullable=False)
 
-    id_answer = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
+    # id_answer = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     id_user = Column(Integer, ForeignKey(User.id), nullable=False)
     id_question_option = Column(Integer, ForeignKey(Question_Option.id), nullable=False)
     answer_value = Column(Integer, nullable=True)
@@ -27,8 +27,8 @@ class Answer(BaseModel, Base):
     id_question = Column(Integer, ForeignKey(Question.id), nullable=False)
     id_survey = Column(Integer, ForeignKey(Survey.id), nullable=False)
     id_survey_section = Column(Integer, ForeignKey(Survey_Section.id), nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow) # datetime NOT NULL ,
     updated_at = Column(DateTime, default=datetime.utcnow) # datetime NULL ,
+    created_at = Column(DateTime, default=datetime.utcnow) # datetime NOT NULL ,
     deleted_at = Column(DateTime, default=datetime.utcnow) # datetime NULL ,
     create_by =  Column(Integer, nullable=False)
     updated_by = Column(Integer, nullable=True)

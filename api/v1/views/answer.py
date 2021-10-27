@@ -11,9 +11,9 @@ def save_answers():
     """
     Return all answers
     """
-    print(request.get_json())
-    print('despues de request')
-    print(request.data)
+    # print(request.get_json())
+    # print('despues de request')
+    # print(request.data)
 
 
 

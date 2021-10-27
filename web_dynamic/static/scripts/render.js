@@ -1,6 +1,6 @@
 // import { createElement, Render, appendRender } from '../scripts/libreria.js';
 
-const url = 'http://localhost:5001/api/v1/surveys/1/sections/1/questions/1';
+// const url = 'http://localhost:5001/api/v1/surveys/1/sections/1/questions/1';
 const questions_url = 'http://localhost:5001/api/v1/questions';
 const answer_url = 'http://localhost:5001/api/v1/answers';
 
@@ -8,9 +8,22 @@ const answers = [];
 let questions = [];
 let currentIndex = 0;
 let count = 0;
+const user_id = $('#user_id').val();
 
-function sendAnswer () {
-  console.log('enviado');
+function filterAnswer (question) {
+  const data = {};
+  const answer = question.answer;
+  data.user_id = user_id;
+  data.id_question_option = answer.id_question;
+  data.answer_value = answer.value;
+  data.active = 1;
+  data.id_question = question.id;
+  data.id_survey = question.id_survey;
+  data.id_survey_section = question.id_survey_section;
+  return data;
+}
+
+function sendAnswers (answers) {
   console.log(answers);
   $.ajax({
     type: 'POST',
@@ -18,8 +31,6 @@ function sendAnswer () {
     url: answer_url,
     contentType: 'application/json; charset=utf-8',
     success: function (json) {
-      console.log('enviado desde render');
-      console.log(json);
     },
     error: function (xhr, status) {
       alert('Disculpe, existió un problema');
@@ -32,7 +43,7 @@ function sendAnswer () {
 
 function render_question (res) {
   const name_section = res.section_name;
-  console.log(res);
+  // console.log(res);
   const nameQuestion = res.name_question;
   const options = res.answer_options;
   $('#title').text(name_section);
@@ -49,11 +60,11 @@ function render_question (res) {
       // let val = el.value;
       // let count = valArr[val.length];
       question.answer = { ...options.find(op => op.id == id) };
-      delete question.answer_options;
-      answers.push(question);
+      const answer = filterAnswer(question);
+      answers.push(answer);
       count = count + question.answer.value;
-      console.log(question.answer.value);
-      console.log(`Resultado: ${count}`);
+      // console.log(question.answer.value);
+      // console.log(`Resultado: ${count}`);
       if (question.answer.survey_is_over == 1) {
         console.log('pop_up');
         // if (question.id == 11){
@@ -61,15 +72,13 @@ function render_question (res) {
         // } else {
         // console.log('pop_up')
         // }
-        sendAnswer();
+        sendAnswers(answers);
         return;
       }
       render_question(questions[currentIndex]);
     }, false);
   });
 }
-
-console.log('resultados');
 
 setTimeout(
   function () {
