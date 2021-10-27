@@ -159,8 +159,8 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='1. Sí.',
-    value=5,
-    order=5
+    value=1,
+    order=1
 ))
 # (6,4,1,1,'2. No.',6,1,6)
 session.add(Question_Option(
@@ -168,8 +168,8 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='2. No.',
-    value=6,
-    order=6
+    value=1,
+    order=1
 ))
 session.commit()
 
