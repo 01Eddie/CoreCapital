@@ -16,10 +16,6 @@ from models.question import Question
 
 class Answer(BaseModel, Base):
     __tablename__ = 'Answer'
-    name = Column(String(128), nullable=False)
-    lastname = Column(String(128), nullable=False)
-
-    # id_answer = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     id_user = Column(Integer, ForeignKey(User.id), nullable=False)
     id_question_option = Column(Integer, ForeignKey(Question_Option.id), nullable=False)
     answer_value = Column(Integer, nullable=True)

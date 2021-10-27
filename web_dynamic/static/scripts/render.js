@@ -10,6 +10,15 @@ let currentIndex = 0;
 let count = 0;
 const user_id = $('#user_id').val();
 
+// let progress_index = (currentIndex + 1) / answers.length;
+function progress (parcial, total) {
+  const progress_index = parseInt((parcial / total) * 100);
+  $('.circle .percent svg circle:nth-child(2)').css({
+    'stroke-dashoffset': `calc(440 - (380 * ${progress_index}) / 100)`
+  });
+  $('#number').text(`${progress_index}`);
+}
+
 function filterAnswer (question) {
   const data = {};
   const answer = question.answer;
@@ -24,13 +33,13 @@ function filterAnswer (question) {
 }
 
 function sendAnswers (answers) {
-  console.log(answers);
   $.ajax({
     type: 'POST',
     data: JSON.stringify(answers),
     url: answer_url,
     contentType: 'application/json; charset=utf-8',
     success: function (json) {
+      alert('Petición realizada con exito');
     },
     error: function (xhr, status) {
       alert('Disculpe, existió un problema');
@@ -39,33 +48,33 @@ function sendAnswers (answers) {
       alert('Petición realizada');
     }
   });
+  console.log(answers);
 }
 
 function render_question (res) {
   const name_section = res.section_name;
-  // console.log(res);
   const nameQuestion = res.name_question;
   const options = res.answer_options;
+
   $('#title').text(name_section);
   $('#p_question').text(nameQuestion);
   $('#text-buttons').html('');
+
   options.forEach((el) => {
     const id = el.id;
     $('#text-buttons').append(`<button id='${id}' type="button" class="botones btn-light">${el.name_option}</button>`);
-    // console.log(id);
     document.getElementById(`${id}`).addEventListener('click', function (event) {
-      // console.log(event.detail);
-      // console.log(id);
       const question = { ...questions[currentIndex++] };
-      // let val = el.value;
-      // let count = valArr[val.length];
+
       question.answer = { ...options.find(op => op.id == id) };
       const answer = filterAnswer(question);
       answers.push(answer);
       count = count + question.answer.value;
-      // console.log(question.answer.value);
       // console.log(`Resultado: ${count}`);
+
+      // Verifica que la encuesta ha finalizado
       if (question.answer.survey_is_over == 1) {
+        progress(1, 1);
         console.log('pop_up');
         // if (question.id == 11){
         // console.log('pop_up_final')
@@ -75,7 +84,9 @@ function render_question (res) {
         sendAnswers(answers);
         return;
       }
+
       render_question(questions[currentIndex]);
+      progress(currentIndex, questions.length);
     }, false);
   });
 }
@@ -83,8 +94,8 @@ function render_question (res) {
 setTimeout(
   function () {
     $.get(questions_url, function (res) {
-      // console.log(res[0]);
       questions = res;
+      progress(0, questions.length);
       render_question(res[currentIndex]);
     });
   }, 0);

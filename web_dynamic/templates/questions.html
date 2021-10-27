@@ -26,11 +26,12 @@
             <div class="circle">
                 <div class="percent">
                     <svg>
-                            <circle cx="70" cy="70" r="70" fill="#"></circle>
-                            <circle cx="70" cy="70" r="70" fill="#"></circle>
+                            <circle id="circle" cx="60" cy="60" r="60" fill="#"></circle>
+                            <circle id="circle" cx="60" cy="60" r="60" fill="#"></circle>
                     </svg>
                     <div class="number">
-                        <h2>10<span>%</span></h2>
+                        <h2 id="number"></h2>
+                        <span>%</span>
                     </div>
                 </div>
             </div>
@@ -43,7 +44,6 @@
 
                 <!-- Título de la sección -->
                 <h1 class="black title" id="title" ></h1>
-                <!-- <h1 class="black title" > PERFIL DE RIESGO</h1> -->
 
                 <input type="hidden" id="user_id" name="user_id" value="{{ user_id }}">
 
@@ -58,10 +58,10 @@
                 </div>
 
                 <!-- div para los botones anterior y siguiente -->
-                <div class="next-btn-container">
-                    <button type="button" class="next-btn-up botones btn-light"> - </button>
-                    <button type="button" class="next-btn botones btn-light"> - </button>
-                </div>
+                <!-- <div class="next-btn-container"> -->
+                <!--     <button type="button" class="next-btn-up botones btn-light"> - </button> -->
+                <!--     <button type="button" class="next-btn botones btn-light"> - </button> -->
+                <!-- </div> -->
             </div>
         </div>
     </main>

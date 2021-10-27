@@ -8,6 +8,8 @@ from api.v1.views import question
 import models
 from models import session
 from models.user import User
+from models.answer import Answer
+from models.type_document import Type_Document
 # from models.question import Question
 from flask_cors import CORS
 from flask import session as flask_session
@@ -100,12 +102,51 @@ def questions():
     user_id = flask_session.get('user_id')
     return render_template('questions.html', user_id=user_id)
 
-""" @app.route("/question/<int:id>", methods=['POST'])
-def options_question(id):
+
+
+""" @app.route("/question", methods=['POST'])
+def options_question():
     if request.method == 'POST':
         data = request.form
         print(data)
-    return "HELLO" """
+    return True """
+
+
+@app.route('/login', methods=['GET', 'POST'], strict_slashes=False)
+def login():
+    if request.method == 'POST':
+        data = request.form
+        # print(data)
+        # flask_session['username']
+        # username = data['username']
+        # password = data['password']
+        flask_session['username'] = data.get('username', '')
+        flask_session['password'] = data.get('password', '')
+        """ print(flask_session['username'])
+        print(flask_session['password']) """
+        if len(flask_session['username']) == 0 or len(flask_session['password']) == 0:
+            return render_template('login.html')
+        """ else: """
+        return redirect(url_for('dashboard'))
+    else:
+        return render_template('login.html')
+
+
+@app.route('/dashboard', methods=['GET', 'POST'], strict_slashes=False)
+def dashboard():
+    if 'username' in flask_session or 'password' in flask_session:
+        print('Loggedo como {}'.format(flask_session['username']))
+        answers = session.query(Answer, User, Type_Document).join(User, User.id == Answer.id_user).join(Type_Document, User.id_type_document == Type_Document.id).all()
+
+        print(answers)
+        return render_template('dashboard.html', answers=answers)
+
+@app.route('/logout')
+def logout():
+    # remove the username from the session if it's there
+    flask_session.pop('username', None)
+    return redirect(url_for('login'))
+
 
 @app.errorhandler(404)
 def not_found(error):
