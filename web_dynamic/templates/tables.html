@@ -115,17 +115,17 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        {% for answer, user, type_document in answers %}
+                                        {% for answer, user, type_document, question in answers %}
                                         <tr>
                                             <td>{{ answer.created_at }}</td>
-               <td>{{ user.name }}</td>
-               <td>{{ user.lastname }}</td>
-               <td>{{ user.email }}</td>
-               <td>{{ user.nro_document }}</td>
-               <td>{{ type_document.name }}</td>
-               <td>{{ user.phone }}</td>
-               <td>NOMbre de la pregunta</td>
-               <td>{{ answer.answer_value }}</td>
+                                            <td>{{ user.name }}</td>
+                                            <td>{{ user.lastname }}</td>
+                                            <td>{{ user.email }}</td>
+                                            <td>{{ user.nro_document }}</td>
+                                            <td>{{ type_document.name }}</td>
+                                            <td>{{ user.phone }}</td>
+                                            <td>{{ question.name_question }}</td>
+                                            <td>{{ answer.answer_value }}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>

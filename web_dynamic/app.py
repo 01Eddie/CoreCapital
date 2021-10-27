@@ -7,9 +7,12 @@ from datetime import datetime
 from api.v1.views import question
 import models
 from models import session
+from models.question import Question
 from models.user import User
 from models.answer import Answer
 from models.type_document import Type_Document
+from models.survey_section import Survey_Section
+from models.question_option import Question_Option
 # from models.question import Question
 from flask_cors import CORS
 from flask import session as flask_session
@@ -136,7 +139,7 @@ def login():
 def dashboard():
     if 'username' in flask_session or 'password' in flask_session:
         print('Loggedo como {}'.format(flask_session['username']))
-        answers = session.query(Answer, User, Type_Document).join(User, User.id == Answer.id_user).join(Type_Document, User.id_type_document == Type_Document.id).all()
+        answers = session.query(Answer, User, Type_Document, Question).join(User, User.id == Answer.id_user).join(Type_Document, User.id_type_document == Type_Document.id).join(Question_Option, Question_Option.id_question == Question_Option.id).all()
         print(answers)
         return render_template('index-Admin.html', answers=answers)
 
@@ -144,7 +147,7 @@ def dashboard():
 def dashboard_tables():
     if 'username' in flask_session or 'password' in flask_session:
         print('Loggedo como {}'.format(flask_session['username']))
-        answers = session.query(Answer, User, Type_Document).join(User, User.id == Answer.id_user).join(Type_Document, User.id_type_document == Type_Document.id).all()
+        answers = session.query(Answer, User, Type_Document, Question).join(User, User.id == Answer.id_user).join(Type_Document, User.id_type_document == Type_Document.id).join(Question_Option, Question_Option.id_question == Question_Option.id).all()
         print(answers)
         return render_template('tables.html', answers=answers)
 
