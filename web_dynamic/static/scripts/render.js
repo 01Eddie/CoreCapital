@@ -13,8 +13,11 @@ let currentIndex = 0;
 let count = 0;
 
 function render_question (res) {
+  const name_section = res.section_name;
+  console.log(res);
   const nameQuestion = res.name_question;
   const options = res.answer_options;
+  $('#title').text(name_section);
   $('#p_question').text(nameQuestion);
   $('#text-buttons').html('');
   options.forEach((el) => {

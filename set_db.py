@@ -41,7 +41,7 @@ session.commit()
 
 surv_sec = Survey_Section(
     id_survey=survey.id,
-    name_section='Perfil de Riesgo',
+    name_section='Cuestionario',
     description=''
 )
 session.add(surv_sec)
@@ -49,8 +49,8 @@ session.commit()
 
 surv_sec_2 = Survey_Section(
     id_survey=survey.id,
-    name_section='Evaluación de Producto',
-    description='Imagina que tu asesor financiero te ofrezca una oportunidad de invertir en Bonos de Financiamiento de Terrenos.<BR />Se trata de un bono a tasa fija que invierte en la compra de terrenos donde se desarrollarán proyectos inmobiliarios de empresas de prestigio.<BR />Estos bonos están respaldados con la garantía hipotecaria del terreno, la cual equivale entre el 100% y 125% de la inversión y se haría efectiva en caso de impago.<BR />El bono tiene un plazo promedio de 15 meses y el monto mínimo de inversión es de US$ 100,000.<BR />Se paga intereses trimestralmente calculados a una tasa anual de 6.5% en dólares para una inversión inferior a US$ 200,000 y de 7.5% para una inversión igual o superior a ese monto.'
+    name_section='Perfil de Riesgo',
+    description=''
 )
 session.add(surv_sec_2)
 session.commit()
@@ -268,7 +268,7 @@ session.commit()
 
 # (7,5,1,2,'1. Extremadamente bajo.',1,1,1)
 session.add(Question_Option(
-    id_question=q1.id,
+    id_question=q5.id,
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='1. Extremadamente bajo.',
@@ -635,7 +635,7 @@ q11 = Question(
 session.add(q11)
 session.commit()
 session.add(Question_Option(
-    id_question=q7.id,
+    id_question=q11.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='1. Muy pequeño.',
