@@ -19,24 +19,30 @@ html {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 5px;
+  border-radius: 8px;
 
 }
 .brand_logo_container {
   position: absolute;
   height: 170px;
   width: 170px;
-  top: -75px;
+  top: -5px;
   border-radius: 50%;
-  background: white;
+  /* background: white; */
   padding: 10px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .brand_logo {
-  height: 150px;
-  width: 150px;
+  /* top: 80px; */
   border-radius: 50%;
+  /* height: 150px; */
+  width: 10rem;
+  /* border-radius: 50%; */
   border: 2px solid transparent;
+  /* position: absolute; */
 }
 .form_container {
   margin-top: 100px;
