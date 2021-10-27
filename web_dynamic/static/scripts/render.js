@@ -39,13 +39,13 @@ function sendAnswers (answers) {
     url: answer_url,
     contentType: 'application/json; charset=utf-8',
     success: function (json) {
-      alert('Petición realizada con exito');
+      alert('Gracias por completar la encuesta, muy pronto un asesor se comunicará con usted.');
     },
     error: function (xhr, status) {
       alert('Disculpe, existió un problema');
     },
     complete: function (xhr, status) {
-      alert('Petición realizada');
+      // alert('Petición realizada');
     }
   });
   console.log(answers);

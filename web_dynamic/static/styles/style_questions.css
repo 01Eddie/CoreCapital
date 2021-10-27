@@ -37,13 +37,14 @@ main {
     height: 80%;
     width: 88%;
     margin: 0;
-    background-color: salmon;
+    background-color: #F97A00;
 }
 
 .container-left {
     background-color: #F97A00;
     height: 100%;
-    min-width: 20%;
+    min-width: 14%;
+    max-width: 20%;
     display: flex;
     justify-content: space-between;
     align-items: center;
