@@ -129,8 +129,10 @@ def login():
         print(flask_session['password']) """
         if len(flask_session['username']) == 0 or len(flask_session['password']) == 0:
             return render_template('login.html')
-        """ else: """
-        return redirect(url_for('dashboard'))
+        elif flask_session['username'] == "admin@corecapital.com" and flask_session['password'] == "corecapital2021":
+            return redirect(url_for('dashboard'))
+        else:
+            return render_template('login.html')
     else:
         return render_template('login.html')
 
