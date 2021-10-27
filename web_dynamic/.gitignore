@@ -3,3 +3,9 @@ appEddie.py
 appEddieV0.py
 perfilDeRiesgo.json
 __pycache__
+templates/questionsEddie.html
+templates/indexEddie.html
+templates/modalEddie.html
+templates/dashboardEddie.html
+scripts/renderEddie.js
+styles/style_questionsEddie.css
