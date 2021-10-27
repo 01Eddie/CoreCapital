@@ -137,9 +137,16 @@ def dashboard():
     if 'username' in flask_session or 'password' in flask_session:
         print('Loggedo como {}'.format(flask_session['username']))
         answers = session.query(Answer, User, Type_Document).join(User, User.id == Answer.id_user).join(Type_Document, User.id_type_document == Type_Document.id).all()
-
         print(answers)
-        return render_template('dashboard.html', answers=answers)
+        return render_template('index-Admin.html', answers=answers)
+
+@app.route('/dashboard-tables', methods=['GET', 'POST'], strict_slashes=False)
+def dashboard_tables():
+    if 'username' in flask_session or 'password' in flask_session:
+        print('Loggedo como {}'.format(flask_session['username']))
+        answers = session.query(Answer, User, Type_Document).join(User, User.id == Answer.id_user).join(Type_Document, User.id_type_document == Type_Document.id).all()
+        print(answers)
+        return render_template('tables.html', answers=answers)
 
 @app.route('/logout')
 def logout():
