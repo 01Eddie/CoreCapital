@@ -4,6 +4,7 @@ const url = 'http://localhost:5001/api/v1/surveys/1/sections/1/questions/1';
 
 // console.log(url);
 const questions_url = 'http://localhost:5001/api/v1/questions';
+const answer_url = 'http://localhost:5001/api/v1/answers';
 // console.log("API QUESTIONS");
 // console.log(questions_url);
 
@@ -11,6 +12,29 @@ const answers = [];
 let questions = [];
 let currentIndex = 0;
 let count = 0;
+
+function sendAnswer () {
+  console.log('enviado');
+  // $.post(answer_url, {answers}, (data)=>console.log(data))
+  console.log(answers);
+  $.ajax({
+    url: answer_url,
+    // data : JSON.stringify(answers),
+    data: JSON.stringify({ objeto: 'valor' }),
+    type: 'POST',
+    dataType: 'json',
+    success: function (json) {
+      console.log('enviado desde render');
+      console.log(json);
+    },
+    error: function (xhr, status) {
+      alert('Disculpe, existió un problema');
+    },
+    complete: function (xhr, status) {
+      alert('Petición realizada');
+    }
+  });
+}
 
 function render_question (res) {
   const name_section = res.section_name;
@@ -24,22 +48,38 @@ function render_question (res) {
     const id = el.id;
     $('#text-buttons').append(`<button id='${id}' type="button" class="botones btn-light">${el.name_option}</button>`);
     // console.log(id);
-    document.getElementById(`${id}`).addEventListener("click", function(event) {
+    document.getElementById(`${id}`).addEventListener('click', function (event) {
       // console.log(event.detail);
       // console.log(id);
-      let question = {...questions[currentIndex++]};
+      const question = { ...questions[currentIndex++] };
       // let val = el.value;
       // let count = valArr[val.length];
-      question.answer = {...options.find(op => op.id == id)};
+      question.answer = { ...options.find(op => op.id == id) };
       delete question.answer_options;
       answers.push(question);
       count = count + question.answer.value;
       console.log(question.answer.value);
       console.log(`Resultado: ${count}`);
+      if (question.answer.survey_is_over == 1) {
+        console.log('pop_up');
+        // if (question.id == 11){
+        // console.log('pop_up_final')
+        // } else {
+        // console.log('pop_up')
+        // }
+        sendAnswer();
+        return;
+      }
+      // if (currentIndex == questions.length - 1) {
+      //   console.log('pop_up');
+      //   return;
+      // }
       render_question(questions[currentIndex]);
     }, false);
   });
 }
+
+console.log('resultados');
 
 setTimeout(
   function () {

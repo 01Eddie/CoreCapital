@@ -22,4 +22,5 @@ class Question_Option(BaseModel, Base):
     name_option = Column(String(200), nullable=False)
     value = Column(Integer, nullable=False)
     order = Column(Integer, nullable=False)
+    survey_is_over = Column(Integer, default=0, nullable=False)
     # answers = relationship("Answer", cascade="all", backref="Question_Option")

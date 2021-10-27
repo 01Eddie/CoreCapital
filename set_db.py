@@ -169,7 +169,8 @@ session.add(Question_Option(
     id_survey_section=surv_sec.id,
     name_option='2. No.',
     value=1,
-    order=1
+    order=1,
+    survey_is_over=1
 ))
 session.commit()
 
@@ -192,7 +193,7 @@ session.add(Question_Option(
     id_question=q4.id,
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
-    name_option='1. Extremadamente bajo.',
+    name_option='1. Si.',
     value=1,
     order=1
 ))
@@ -201,55 +202,56 @@ session.add(Question_Option(
     id_question=q4.id,
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
-    name_option='2. Muy bajo.',
+    name_option='2. No.',
     value=2,
-    order=2
+    order=2,
+    survey_is_over=1
 ))
 # (9,5,1,2,'3. Bajo.',3,1,3)
-session.add(Question_Option(
-    id_question=q4.id,
-    id_survey=survey.id,
-    id_survey_section=surv_sec.id,
-    name_option='3. Bajo.',
-    value=3,
-    order=3
-))
-# (10,5,1,2,'4. Promedio.',4,1,4)
-session.add(Question_Option(
-    id_question=q4.id,
-    id_survey=survey.id,
-    id_survey_section=surv_sec.id,
-    name_option='4. Promedio.',
-    value=4,
-    order=4
-))
-# (11,5,1,2,'5. Alto.',5,1,5)
-session.add(Question_Option(
-    id_question=q4.id,
-    id_survey=survey.id,
-    id_survey_section=surv_sec.id,
-    name_option='5. Alto.',
-    value=5,
-    order=5
-))
-# (12,5,1,2,'6. Muy alto.',6,1,6)
-session.add(Question_Option(
-    id_question=q4.id,
-    id_survey=survey.id,
-    id_survey_section=surv_sec.id,
-    name_option='6. Muy alto.',
-    value=6,
-    order=6
-))
-# (13,5,1,2,'7. Extremadamente alto.',7,1,7)
-session.add(Question_Option(
-    id_question=q4.id,
-    id_survey=survey.id,
-    id_survey_section=surv_sec.id,
-    name_option='7. Extremadamente alto.',
-    value=7,
-    order=7
-))
+# session.add(Question_Option(
+#     id_question=q4.id,
+#     id_survey=survey.id,
+#     id_survey_section=surv_sec.id,
+#     name_option='3. Bajo.',
+#     value=3,
+#     order=3
+# ))
+# # (10,5,1,2,'4. Promedio.',4,1,4)
+# session.add(Question_Option(
+#     id_question=q4.id,
+#     id_survey=survey.id,
+#     id_survey_section=surv_sec.id,
+#     name_option='4. Promedio.',
+#     value=4,
+#     order=4
+# ))
+# # (11,5,1,2,'5. Alto.',5,1,5)
+# session.add(Question_Option(
+#     id_question=q4.id,
+#     id_survey=survey.id,
+#     id_survey_section=surv_sec.id,
+#     name_option='5. Alto.',
+#     value=5,
+#     order=5
+# ))
+# # (12,5,1,2,'6. Muy alto.',6,1,6)
+# session.add(Question_Option(
+#     id_question=q4.id,
+#     id_survey=survey.id,
+#     id_survey_section=surv_sec.id,
+#     name_option='6. Muy alto.',
+#     value=6,
+#     order=6
+# ))
+# # (13,5,1,2,'7. Extremadamente alto.',7,1,7)
+# session.add(Question_Option(
+#     id_question=q4.id,
+#     id_survey=survey.id,
+#     id_survey_section=surv_sec.id,
+#     name_option='7. Extremadamente alto.',
+#     value=7,
+#     order=7
+# ))
 session.commit()
 
 #PREGUNTA 1
@@ -888,7 +890,8 @@ session.add(Question_Option(
     id_survey_section=surv_sec_2.id,
     name_option='1. Siempre hacia un riesgo menor.',
     value=1,
-    order=1
+    order=1,
+    survey_is_over=1
 ))
 session.add(Question_Option(
     id_question=q15.id,
@@ -896,7 +899,8 @@ session.add(Question_Option(
     id_survey_section=surv_sec_2.id,
     name_option='2. Principalmente hacia un riesgo menor.',
     value=2,
-    order=2
+    order=2,
+    survey_is_over=1
 ))
 session.add(Question_Option(
     id_question=q15.id,
@@ -904,7 +908,8 @@ session.add(Question_Option(
     id_survey_section=surv_sec_2.id,
     name_option='3. Sin cambios o cambios sin una dirección clara.',
     value=3,
-    order=3
+    order=3,
+    survey_is_over=1
 ))
 session.add(Question_Option(
     id_question=q15.id,
@@ -912,7 +917,8 @@ session.add(Question_Option(
     id_survey_section=surv_sec_2.id,
     name_option='4. Principalmente hacia un mayor riesgo.',
     value=4,
-    order=4
+    order=4,
+    survey_is_over=1
 ))
 session.add(Question_Option(
     id_question=q15.id,
@@ -920,7 +926,8 @@ session.add(Question_Option(
     id_survey_section=surv_sec_2.id,
     name_option='5. Siempre hacia mayor riesgo.',
     value=5,
-    order=5
+    order=5,
+    survey_is_over=1
 ))
 session.commit()
 
