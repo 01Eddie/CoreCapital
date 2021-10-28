@@ -19,6 +19,9 @@
 body {
     position: relative;
     background-color: #A8C2D1;
+    background-image: url("../images/img1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     background-position: right;
     height: 100vh;
     width: 100vw;
@@ -35,20 +38,23 @@ main {
     align-items: center;
     justify-content: flex-start;
     height: 80%;
-    width: 88%;
+    width: auto;
     margin: 0;
-    background-color: #F97A00;
+    background-color: white;
+    border-radius: 8px;
 }
 
 .container-left {
-    background-color: #F97A00;
-    height: 100%;
-    min-width: 14%;
+    /* background-color: #F97A00; */
+    /* background-color: black; */
+    height: 80%;
+    min-width: 28%;
     max-width: 20%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    border-right:2px solid #F97A00;
 }
 
 .logo {
@@ -92,7 +98,7 @@ main {
     /* width: 20%; */
     /* height: 50%; */
     fill: none;
-    stroke-width: 5.5;
+    stroke-width: 3;
     stroke: #000;
     transform: translate(5px,5px);
     top: 0;
@@ -108,12 +114,13 @@ main {
 
 .circle .percent svg circle:nth-child(1){
     stroke-dashoffset: 0;
-    stroke: white;
+    stroke: black;
 }
 
 .circle .percent svg circle:nth-child(2){
     /* stroke-dashoffset: calc(440 - (440 * 10) / 100); */
-    stroke: black;
+    stroke: #F97A00;
+    /* stroke: #A8C2D1; */
 }
 
 .circle .percent .number {
@@ -123,35 +130,37 @@ main {
     /* max-width: 20%; */
     /* opacity: .8; */
     position: absolute;
-    top: 30%;
-    left: 18%;
-    width: 55%;
+    top: 26%;
+    /* left: 41; */
+    right: 14%;
+    width: 80%;
     /* height: 100%; */
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
     color: black;
     /* background-color: lightcoral; */
     /* opacity: 0.8; */
 }
 
 .circle .percent .number h2{
-    font-size: 2.6rem;
+    font-size: 2rem;
 }
 
 .circle .percent .number span{
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-weight: bold;
 }
 
 .container-right {
     padding: 20px 40px 40px;
     max-width: 640px;
-    background-color: white;
-    height: 100%;
-    min-width: 75%;
+    /* background-color: white; */
+    height: 80%;
+    min-width: 44%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-content: center;
 }
 
@@ -186,8 +195,9 @@ main {
     flex-direction: column;
     align-items: left;
     justify-content: center;
-    padding:5rem;
+    padding: 1.4rem;
     height: 100%;
+    /* background-color: salmon; */
 }
 
 .title {
@@ -195,13 +205,16 @@ main {
     font-size: 2rem;
     padding-bottom: 1.4rem;
     letter-spacing: 0.2rem;
+    /* background-color: lightgray; */
 }
 
 .parr {
     text-align: justify;
-    width: 90%;
+    max-width: 94%;
+    min-width: 100%;
     font-weight: bold;
     font-size: 1rem;
+    /* background-color: khaki; */
 }
 
 .subtitle {
@@ -209,27 +222,38 @@ main {
     font-weight: bold;
 }
 
-.botones {
-    padding: 14px 34px!important;
-    font-weight: 400;
-    font-size: 1rem;
-    border: solid 1px black;
+.text-buttons {
     display: flex;
-    flex-wrap: nowrap;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* background-color: lightcoral; */
+    max-width: 40rem;
+}
+
+.botones {
+    flex-grow: 1;
+    padding: 10px 24px!important;
+    font-weight: 400;
+    font-size: .8rem;
+    font-weight: bold;
+    border: solid 2px black;
+    /* display: flex; */
+    /* display: center; */
+    /* justify-content: center; */
+    /* flex-wrap: nowrap; */
     /* justify-content: center; */
     border-radius: 4px;
-    padding: 5px 45px 5px 5px ;
     background-color: white;
     margin: 0.5rem 2rem; 
-    padding-left: 1rem;
-    /* width: 12rem; */
+    /* min-width: 12rem; */
+    /* max-width: 18rem; */
+    /* max-height: 6rem; */
     text-align: left;
 }
 
 .botones:hover {
     background-color: black;
     color: white;
-    border: 2px solid;
 }
 
 .next-btn-container {

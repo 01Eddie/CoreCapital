@@ -19,6 +19,9 @@
 body {
     position: relative;
     background-color: #A8C2D1;
+    background-image: url("../images/img1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     background-position: right;
     height: 100vh;
     width: 100vw;
@@ -35,25 +38,28 @@ main {
     align-items: center;
     justify-content: flex-start;
     height: 80%;
-    width: 88%;
+    width: 70%;
     margin: 0;
     /* margin: auto; */
-    background-color: salmon;
+    background-color: white;
+    border-radius: 8px;
 }
 
 .container-left {
-    background-color: #F97A00;
-    height: 100%;
+    /* background-color: #F97A00; */
+    height: 86%;
     min-width: 20%;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border-right:2px solid #F97A00;
 }
 
 .container-right {
     padding: 20px 40px 40px;
     max-width: 640px;
-    background-color: white;
+    /* background-color: white; */
     height: 100%;
     min-width: 80%;
     display: flex;
@@ -77,14 +83,15 @@ main {
 }
 
 .title {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     padding-bottom: 1.4rem;
 }
 
 .parr {
+    font-size: .9rem;
     text-align: justify;
-    width: 70%;
+    width: 90%;
 }
 
 .subtitle {
@@ -93,10 +100,11 @@ main {
 }
 
 .botones {
-    padding: 10px 20px;
-    font-weight: 300;
+    /* padding: 14px 30px!important; */
+    min-width: 14rem;
+    font-weight: 600;
     font-size: .8rem;
-    border: solid 1px black;
+    border: solid 2px black;
     display: center;
     justify-content: center;
     border-radius: 4px;
@@ -108,7 +116,6 @@ main {
 .botones:hover {
     background-color: black;
     color: white;
-    border: 2px solid;
 }
 
 .boton-x {

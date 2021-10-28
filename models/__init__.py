@@ -23,6 +23,7 @@ engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
 from models.user import User
 from models.question import Question
 from models.answer import Answer
+from models.measure import Measure
 
 Base.metadata.create_all(engine)
 sess_factory = sessionmaker(bind=engine, expire_on_commit=False)

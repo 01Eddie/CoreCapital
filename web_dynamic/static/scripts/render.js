@@ -14,9 +14,9 @@ const user_id = $('#user_id').val();
 function progress (parcial, total) {
   const progress_index = parseInt((parcial / total) * 100);
   $('.circle .percent svg circle:nth-child(2)').css({
-    'stroke-dashoffset': `calc(440 - (380 * ${progress_index}) / 100)`
+    'stroke-dashoffset': `calc(440 - (320 * ${progress_index}) / 100)`
   });
-  $('#number').text(`${progress_index}`);
+  $('#number').text(`${progress_index}%`);
 }
 
 function filterAnswer (question) {
@@ -62,7 +62,7 @@ function render_question (res) {
 
   options.forEach((el) => {
     const id = el.id;
-    $('#text-buttons').append(`<button id='${id}' type="button" class="botones btn-light">${el.name_option}</button>`);
+    $('#text-buttons').append(`<button id='${id}' type="button" class="botones">${el.name_option}</button>`);
     document.getElementById(`${id}`).addEventListener('click', function (event) {
       const question = { ...questions[currentIndex++] };
 
@@ -94,6 +94,7 @@ function render_question (res) {
 setTimeout(
   function () {
     $.get(questions_url, function (res) {
+      console.log(res);
       questions = res;
       progress(0, questions.length);
       render_question(res[currentIndex]);
