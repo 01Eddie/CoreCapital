@@ -8,9 +8,10 @@ const answers = [];
 let questions = [];
 let currentIndex = 0;
 let count = 0;
+let measureSum = 0;
+let id_risk_profile = 0;
 const user_id = $('#user_id').val();
 
-// let progress_index = (currentIndex + 1) / answers.length;
 function progress (parcial, total) {
   const progress_index = parseInt((parcial / total) * 100);
   $('.circle .percent svg circle:nth-child(2)').css({
@@ -48,7 +49,7 @@ function sendAnswers (answers) {
       // alert('Petición realizada');
     }
   });
-  console.log(answers);
+  // console.log(answers);
 }
 
 function render_question (res) {
@@ -62,14 +63,20 @@ function render_question (res) {
 
   options.forEach((el) => {
     const id = el.id;
-    $('#text-buttons').append(`<button id='${id}' type="button" class="botones">${el.name_option}</button>`);
+    $('#text-buttons').append(`<button id="${id}" type="button" class="botones">${el.name_option}</button>`);
     document.getElementById(`${id}`).addEventListener('click', function (event) {
       const question = { ...questions[currentIndex++] };
 
       question.answer = { ...options.find(op => op.id == id) };
       const answer = filterAnswer(question);
       answers.push(answer);
+
+      if (question.measure) {
+        const measureOp = ((question.answer.value) / question.measure.desv_std) * question.measure.score;
+        measureSum = measureSum + measureOp;
+      }
       count = count + question.answer.value;
+      // console.log(measureSum);
       // console.log(`Resultado: ${count}`);
 
       // Verifica que la encuesta ha finalizado
@@ -81,7 +88,19 @@ function render_question (res) {
         // } else {
         // console.log('pop_up')
         // }
-        sendAnswers(answers);
+
+        if (measureSum < -1) {
+          id_risk_profile = 1;
+        } else if (measureSum <= 0) {
+          id_risk_profile = 2;
+        } else if (measureSum > 0.75) {
+          id_risk_profile = 4;
+        } else {
+          id_risk_profile = 3;
+        }
+
+        const data = { res: measureSum, answers: answers, id_survey: question.id_survey, id_user: user_id, id_risk_profile: id_risk_profile };
+        sendAnswers(data);
         return;
       }
 
@@ -94,7 +113,6 @@ function render_question (res) {
 setTimeout(
   function () {
     $.get(questions_url, function (res) {
-      console.log(res);
       questions = res;
       progress(0, questions.length);
       render_question(res[currentIndex]);

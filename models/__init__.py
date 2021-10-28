@@ -24,6 +24,8 @@ from models.user import User
 from models.question import Question
 from models.answer import Answer
 from models.measure import Measure
+from models.risk_profile import Risk_Profile
+from models.evaluation import Evaluation
 
 Base.metadata.create_all(engine)
 sess_factory = sessionmaker(bind=engine, expire_on_commit=False)

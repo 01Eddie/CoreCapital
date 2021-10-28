@@ -120,6 +120,16 @@ q2 = Question(
 session.add(q2)
 session.commit()
 
+session.add(Question_Option(
+    id_question=q2.id,
+    id_survey=survey.id,
+    id_survey_section=surv_sec.id,
+    name_option='Placeholder',
+    value=0,
+    order=1
+))
+session.commit()
+
 
 #PREGUNTA 1 - F1
 # (3,1,1,'F1. ¿Alguna vez has invertido en productos financieros?',1,1,0,3)

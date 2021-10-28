@@ -12,12 +12,13 @@ def all_question():
     """
     Return all questions
     """
-    all_questions = session.query(Question, Measure).join(Measure, Question.id==Measure.id_question).all()
+    all_questions = session.query(Question, Measure).join(Measure, Question.id==Measure.id_question, isouter=True).all()
 
     list_question = []
     for question, measure in all_questions:
         questionOpt = question.to_dict()
-        questionOpt["measure"] = mesure.to_dict()
+        if measure is not None:
+            questionOpt["measure"] = measure.to_dict()
         questionOpt["answer_options"] = [op.to_dict() for op in question.answer_options] if question.answer_options else []
         section = session.query(Survey_Section).filter_by(id=question.id_survey_section).first()
         questionOpt["section_name"] = section.name_section if section is not None else ''
