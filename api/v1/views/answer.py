@@ -11,16 +11,16 @@ from models.risk_profile import Risk_Profile
 from models.user import User
 
 
-@app_views.route('/risk_profile', methods=['POST'], strict_slashes=False)
-def save_answers():
-    """
-    Return all answers
-    """
-    data = session.query(User).join(Evaluation, Evaluacion.id_user==User.id).join(Risk_Profile, Evaluation.id_risk_profile==Risk_Profile.id).first()
-    if data is None: return abort
-    print(data)
-    # return jsonify({'status': 'ok'})
-    return data
+# @app_views.route('/risk_profile', methods=['POST'], strict_slashes=False)
+# def save_answers():
+#     """
+#     Return all answers
+#     """
+#     data = session.query(User).join(Evaluation, Evaluacion.id_user==User.id).join(Risk_Profile, Evaluation.id_risk_profile==Risk_Profile.id).first()
+#     if data is None: return abort
+#     print(data)
+#     # return jsonify({'status': 'ok'})
+#     return data
 
 
 
