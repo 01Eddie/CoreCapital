@@ -25,7 +25,7 @@ def save_answers():
         id_survey_section = answer.get('id_survey_section'),
         create_by = answer.get('user_id')
         )
-        print(answer)
+        # print(answer)
         session.add(ans)
     session.commit()
     # print(len(answer_list))

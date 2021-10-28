@@ -92,41 +92,44 @@
                                     <thead>
                                         <tr>
                                             <th>Fecha de Registro</th>
+                                            <th>Fecha Limite</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
-                                            <th>email</th>
-                                            <th>numero de documento</th>
+                                            <th>Email</th>
+                                            <th>Numero de documento</th>
                                             <th>Tipo de documento</th>
                                             <th>Telefono</th>
-                                            <th>nombre de la pregunta (name_question)</th>
-                                            <th>Peso de la pregunta</th>
+                                            <!-- <th>Nombre de la pregunta (name_question)</th>
+                                            <th>Peso de la pregunta</th> -->
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>Fecha de Registro</th>
+                                            <th>Fecha Limite</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
-                                            <th>email</th>
-                                            <th>numero de documento</th>
+                                            <th>Email</th>
+                                            <th>Numero de documento</th>
                                             <th>Tipo de documento</th>
                                             <th>Telefono</th>
-                                            <th>nombre de la pregunta (name_question)</th>
-                                            <th>Peso de la pregunta</th>
+                                            <!-- <th>Nombre de la pregunta (name_question)</th>
+                                            <th>Peso de la pregunta</th> -->
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        {% for answer, user, type_document, question in answers %}
+                                        {% for user, type_document in answers %}
                                         <tr>
-                                            <td>{{ answer.created_at }}</td>
+                                            <td>{{ user.created_at }}</td>
+                                            <td>{{ user.blocked_until }}</td>
                                             <td>{{ user.name }}</td>
                                             <td>{{ user.lastname }}</td>
                                             <td>{{ user.email }}</td>
                                             <td>{{ user.nro_document }}</td>
                                             <td>{{ type_document.name }}</td>
                                             <td>{{ user.phone }}</td>
-                                            <td>{{ question.name_question }}</td>
-                                            <td>{{ answer.answer_value }}</td>
+                                            <!-- <td>{{ question.name_question }}</td>
+                                            <td>{{ answer.answer_value }}</td> -->
                                         </tr>
                                         {% endfor %}
                                     </tbody>
@@ -145,7 +148,7 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js-admin/scripts.js"></script>
+        <script src="{{url_for('static', filename='js-admin/scripts.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="{{url_for('static', filename='js-admin/datatables-simple-demo.js')}}"></script>
     </body>

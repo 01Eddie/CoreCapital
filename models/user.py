@@ -4,11 +4,12 @@
 from models.base_model import BaseModel, Base
 from os import getenv
 # from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import datetime, timedelta
 import sqlalchemy
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import Column, String, Integer, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 from models.type_document import Type_Document
+""" from datetime import date """
 
 class User(BaseModel, Base):
     __tablename__ = "Users"
@@ -23,7 +24,7 @@ class User(BaseModel, Base):
 #    deleted_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 #    created_by = Column(DateTime, default=datetime.utcnow, nullable=False)
 #    updated_by = Column(Integer, nullable=True)
-#    deleted_by = Column(Integer, nullable=True)
+    blocked_until = Column(DateTime, default=datetime.now()+timedelta(days=365*2), nullable=False)
     id_type_document = Column(Integer, ForeignKey('Type_Document.id'))
 
 # modelo

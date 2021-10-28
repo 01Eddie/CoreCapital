@@ -20,8 +20,8 @@ def get_users():
     list_users = []
     for user in all_users:
         list_users.append(user.to_dict())
-    print(type(User))
-    print(User)
+    # print(type(User))
+    # print(User)
     return jsonify(list_users)
 
 
