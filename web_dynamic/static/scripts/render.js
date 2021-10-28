@@ -3,6 +3,7 @@
 // const url = 'http://localhost:5001/api/v1/surveys/1/sections/1/questions/1';
 const questions_url = 'http://localhost:5001/api/v1/questions';
 const answer_url = 'http://localhost:5001/api/v1/answers';
+const profile_url = 'http://localhost:5001/api/v1/risk_profile';
 
 const answers = [];
 let questions = [];

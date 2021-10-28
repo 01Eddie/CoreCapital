@@ -7,6 +7,22 @@ from models import session
 from models.survey_section import Survey_Section
 from models.answer import Answer
 from models.evaluation import Evaluation
+from models.risk_profile import Risk_Profile
+from models.user import User
+
+
+@app_views.route('/risk_profile', methods=['POST'], strict_slashes=False)
+def save_answers():
+    """
+    Return all answers
+    """
+    data = session.query(User).join(Evaluation, Evaluacion.id_user==User.id).join(Risk_Profile, Evaluation.id_risk_profile==Risk_Profile.id).first()
+    if data is None: return abort
+    print(data)
+    # return jsonify({'status': 'ok'})
+    return data
+
+
 
 @app_views.route('/answers', methods=['POST'], strict_slashes=False)
 def save_answers():
@@ -43,21 +59,4 @@ def save_answers():
     session.add(evaluation)
 
     session.commit()
-    # print(len(answer_list))
-    # print('despues de request')
-    # print(request.data)
-
-
-
-#     all_questions = session.query(Question).all()
-#     list_question = []
-#     for question in all_questions:
-#         questionOpt = question.to_dict()
-#         # if not question.answer_options:
-#         #     print(question.name_question)
-#         questionOpt["answer_options"] = [op.to_dict() for op in question.answer_options] if question.answer_options else []
-#         section = session.query(Survey_Section).filter_by(id=question.id_survey_section).first()
-#         questionOpt["section_name"] = section.name_section if section is not None else ''
-#         # print(question.answer_options)
-#         list_question.append(questionOpt)
     return jsonify({'status': 'ok'})
