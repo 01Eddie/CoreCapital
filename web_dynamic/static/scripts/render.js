@@ -72,9 +72,13 @@ function render_question (res) {
       const answer = filterAnswer(question);
       console.log(answer);
       answers.push(answer);
+      console.log(question.answer.value);
+      console.log(question.answer.media);
+      console.log(question.answer.desv_std);
+      console.log(question.answer.score);
 
       if (question.measure) {
-        const measureOp = ((question.answer.value) / question.measure.desv_std) * question.measure.score;
+        const measureOp = ((question.answer.value - question.measure.media) / question.measure.desv_std) * question.measure.score;
         measureSum = measureSum + measureOp;
       }
       count = count + question.answer.value;
@@ -90,6 +94,7 @@ function render_question (res) {
         // } else {
         // console.log('pop_up')
         // }
+        // if (question.id == )
 
         if (measureSum < -1) {
           id_risk_profile = 1;

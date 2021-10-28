@@ -70,6 +70,28 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.btn_export {
+    padding: 10px 24px!important;
+    font-weight: 400;
+    font-size: .8rem;
+    font-weight: bold;
+    border: solid 2px black;
+    border-radius: 4px;
+    background-color: white;
+    margin: 0.5rem 2rem; 
+    /* min-width: 12rem; */
+    /* max-width: 18rem; */
+    /* max-height: 6rem; */
+    text-align: left;
+    text-decoration: none;
+    margin-bottom: 2rem;
+}
+
+.btn_export:hover {
+    background-color: black;
+    color: white;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;
