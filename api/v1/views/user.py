@@ -16,10 +16,14 @@ def get_users():
     or a specific user
     """
     all_users = session.query(User).all()
+    
     # all_users = User.query.all()
     list_users = []
     for user in all_users:
+        # if user.nro_document is True:
+        # print("DNI: {}".format(user.nro_document))
         list_users.append(user.to_dict())
+    # print("Lista de usuarios {}".format(user))
     # print(type(User))
     # print(User)
     return jsonify(list_users)

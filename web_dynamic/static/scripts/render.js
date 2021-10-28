@@ -24,7 +24,7 @@ function filterAnswer (question) {
   const data = {};
   const answer = question.answer;
   data.user_id = user_id;
-  data.id_question_option = answer.id_question;
+  data.id_question_option = answer.id;
   data.answer_value = answer.value;
   data.active = 1;
   data.id_question = question.id;
@@ -69,6 +69,7 @@ function render_question (res) {
 
       question.answer = { ...options.find(op => op.id == id) };
       const answer = filterAnswer(question);
+      console.log(answer);
       answers.push(answer);
 
       if (question.measure) {

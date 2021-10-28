@@ -6,6 +6,8 @@ from models.question import Question
 from models.survey_section import Survey_Section
 from models.question_option import Question_Option
 from models.type_document import Type_Document
+from models.measure import Measure
+from models.risk_profile import Risk_Profile
 
 Base.metadata.drop_all(engine)
 Base.metadata.create_all(engine)
@@ -899,3 +901,123 @@ session.commit()
 #     # print(sheet.cell_value(row, 0))
 #     # print()
 #     # print(qname)
+
+measure1 = Measure(
+    id_question = 5,
+    media = 3.86046511627907,
+    desv_std = 0.965633158898179,
+    score = 0.178672731177203
+)
+session.add(measure1)
+session.commit()
+measure2 = Measure(
+    id_question = 6,
+    media = 2.23255813953488,
+    desv_std = 0.781854002396306,
+    score = 0.119474535976691
+)
+session.add(measure2)
+session.commit()
+measure3 = Measure(
+    id_question = 7,
+    media = 1.72093023255814,
+    desv_std = 0.983811378440982,
+    score = 0.133514493245987
+)
+session.add(measure3)
+session.commit()
+measure4 = Measure(
+    id_question = 8,
+    media = 3.18604651162791,
+    desv_std = 1.4352005659321,
+    score = 0.125482172553175
+)
+session.add(measure4)
+session.commit()
+measure5 = Measure(
+    id_question = 9,
+    media = 2.65116279069767,
+    desv_std = 0.719911400971793,
+    score = 0.137375956440199
+)
+session.add(measure5)
+session.commit()
+measure6 = Measure(
+    id_question = 10,
+    media = 2.95348837209302,
+    desv_std = 0.75446254513026,
+    score = 0.173573261499592
+)
+session.add(measure6)
+session.commit()
+measure7 = Measure(
+    id_question = 11,
+    media = 2.48837209302326,
+    desv_std = 0.960458546817633,
+    score = 0.1470436485641
+)
+session.add(measure7)
+session.commit()
+measure8 = Measure(
+    id_question = 12,
+    media = 3.44186046511628,
+    desv_std = 1.84264723623631,
+    score = 0.121211309672033
+)
+session.add(measure8)
+session.commit()
+measure9 = Measure(
+    id_question = 13,
+    media = 3.81395348837209,
+    desv_std = 1.20031372790792,
+    score = 0.16417204198077
+)
+session.add(measure9)
+session.commit()
+measure10 = Measure(
+    id_question = 14,
+    media = 2.13953488372093,
+    desv_std = 0.74262710468397,
+    score = 0.099489154305808
+)
+session.add(measure10)
+session.commit()
+measure11 = Measure(
+    id_question = 15,
+    media = 2.67441860465116,
+    desv_std = 1.10670962838063,
+    score = 0.132667813313866
+)
+session.add(measure11)
+session.commit()
+
+risk_profile1 = Risk_Profile(
+    name = 'Adverso',
+    operator = '<',
+    value = -1
+)
+session.add(risk_profile1)
+session.commit()
+
+risk_profile2 = Risk_Profile(
+    name = 'Mod. Adverso',
+    operator = '<=',
+    value = 0
+)
+session.add(risk_profile2)
+session.commit()
+
+risk_profile3 = Risk_Profile(
+    name = 'Mod. Agresivo',
+    operator = '>',
+    value = 0
+)
+session.add(risk_profile3)
+session.commit()
+risk_profile4 = Risk_Profile(
+    name = 'Agresivo',
+    operator = '>',
+    value = 0.75
+)
+session.add(risk_profile4)
+session.commit()

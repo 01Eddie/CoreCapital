@@ -91,7 +91,7 @@
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Dashboard</h1>
-                        <button>Exportar a excel</button>
+                        <a href="{{url_for('download')}}">Exportar a excel</a>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
@@ -107,7 +107,6 @@
                                     <thead>
                                         <tr>
                                             <th>Fecha de Registro</th>
-                                            
                                             <th>Fecha Limite</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
@@ -115,8 +114,6 @@
                                             <th>Numero de documento</th>
                                             <th>Tipo de documento</th>
                                             <th>Telefono</th>
-                                            <!-- <th>Nombre de la pregunta</th>
-                                            <th>Peso de la pregunta</th> -->
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -128,8 +125,6 @@
                                             <th>Email</th>
                                             <th>Numero de documento</th>
                                             <th>Tipo de documento</th>
-                                            <!-- <th>Nombre de la pregunta</th>
-                                            <th>Peso de la pregunta</th> -->
                                         </tr>
 
                                     </tfoot>

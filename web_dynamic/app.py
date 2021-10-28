@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 # from models import storage
-from flask import abort, jsonify, make_response, render_template, request, Flask, flash, redirect, url_for
+from flask import abort, jsonify, make_response, render_template, request, Flask, flash, redirect, url_for, send_from_directory, current_app
 from os import environ
 from datetime import datetime
 from api.v1.views import question
@@ -13,9 +13,14 @@ from models.answer import Answer
 from models.type_document import Type_Document
 from models.survey_section import Survey_Section
 from models.question_option import Question_Option
+from models.survey import Survey
+from models.evaluation import Evaluation
+from models.risk_profile import Risk_Profile
 # from models.question import Question
 from flask_cors import CORS
 from flask import session as flask_session
+import pandas as pd
+import os
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
@@ -58,7 +63,14 @@ def add_form():
             2: Pasaporte
             3: Carnet de Extranjería]
         """
+        user_Obj = session.query(User).filter(User.nro_document == data.get('nro_document')).first()
         # print(data)
+        if user_Obj is not None:
+            check_User = session.query(Answer).filter(Answer.id_user == user_Obj.id).first()
+            if check_User is None:
+                return redirect(url_for('modal'))
+            return render_template('index.html')
+            
         type_document = int(data['type_document'])
         nro_document = data['nro_document']
         name = data['name']
@@ -137,12 +149,16 @@ def login():
         return render_template('login.html')
 
 
+
 @app.route('/dashboard', methods=['GET', 'POST'], strict_slashes=False)
 def dashboard():
     if 'username' in flask_session or 'password' in flask_session:
         # print('Loggedo como {}'.format(flask_session['username']))
         answers = session.query(User, Type_Document).join(Type_Document, User.id_type_document == Type_Document.id).all()
         # print(answers)
+        """ names = pd.DataFrame(answers, columns=answers)
+        ex = names.to_excel('dataCorePartners.xlsx') """
+        
         return render_template('index-Admin.html', answers=answers)
 
 @app.route('/dashboard-tables', methods=['GET', 'POST'], strict_slashes=False)
@@ -153,12 +169,94 @@ def dashboard_tables():
         # print(answers)
         return render_template('tables.html', answers=answers)
 
+""" @app.route('/export', methods=['GET'], strict_slashes=False)
+def export():
+    return
+ """
 @app.route('/logout')
 def logout():
     # remove the username from the session if it's there
     flask_session.pop('username', None)
     return redirect(url_for('login'))
 
+@app.route('/download', methods=['GET', 'POST'])
+def download():
+    # df = pd.DataFrame({'Patient Name': ["Some name", "Another name"],
+    #                "Patient ID": [123, 456],
+    #                "Misc Data Point": [8, 53]})
+    # df = pd.DataFrame([['a', 'b'], ['c', 'd']],
+    # index=['row 1', 'row 2'],
+    # columns=['col 1', 'col 2'])
+    # df2 = df.to_excel("output.xlsx")
+
+    # Create a Pandas dataframe from some data.
+    data = [10, 20, 30, 40, 50, 60, 70, 80]
+    questions = session.query(Question).all()
+    users = session.query(User).all()
+    answers = session.query(Answer, Type_Document, User, Question_Option, Question, Risk_Profile).join(User, User.id == Answer.id_user).join(Type_Document, Type_Document.id == User.id_type_document).join(Question_Option, Question_Option.id == Answer.id_question_option).join(Question, Question.id == Answer.id_question).join(Evaluation, User.id == Evaluation.id_user).join(Risk_Profile, Risk_Profile.id == Evaluation.id_risk_profile).all()
+
+    # answers = session.query(Type_Document, User, Answer, Question_Option, Question).join(User, User.id_type_document == Type_Document.id).join(Answer, Answer.id_user == User.id).join(Question_Option, Question_Option.id == Answer.id_question_option).join(Question, Question.id == Answer.id_question).all()
+    # answer_options = session.query(Answer, Question_Option).join(Answer, Answer.id_question_option == Question_Option.id).all()
+    # print(questions)
+    # list_n = []
+    # if request.method == 'GET':
+    #     for t, u, a, qo, q in answers:
+    #         list_n.append([t.to_dict(), u.to_dict(), a.to_dict(), qo.to_dict(), qo.to_dict()])
+        # return jsonify(list_n)
+
+    answer_Doc = [t[1].name for t in answers]
+    list_question = [q[4].name_question for q in answers]
+    list_name = [un[2].name for un in answers]
+    list_nmro_doc = [u[2].nro_document for u in answers]
+    list_lastname = [ul[2].lastname for ul in answers]
+    list_created = [cr[2].created_at for cr in answers]
+    list_answered_question = [aq[3].name_option for aq in answers]
+    list_question_size = [qs[0].answer_value for qs in answers]
+    list_profile = [p[5].name for p in answers]
+    
+    df = pd.DataFrame({
+        "Creado: ": list_created,
+        "Nombre":list_name,
+        "Apellido": list_lastname,
+        "Documento": answer_Doc,
+        "Numero de documento": list_nmro_doc,
+        "Preguntas":list_question,
+        "Respuesta contestada": list_answered_question,
+        "Peso de la Pregunta": list_question_size,
+        "Perfil de Riesgo": list_profile
+        })
+
+    # Create a Pandas Excel writer using XlsxWriter as the engine.
+    writer = pd.ExcelWriter("CoreCapitalEvaluation.xlsx", engine='xlsxwriter')
+
+    # Convert the dataframe to an XlsxWriter Excel object. Turn off the default
+    # header and index and skip one row to allow us to insert a user defined
+    # header.
+    df.to_excel(writer, sheet_name='CoreCapital', startrow=1, header=False, index=False)
+
+    # Get the xlsxwriter workbook and worksheet objects.
+    workbook = writer.book
+    worksheet = writer.sheets['CoreCapital']
+
+    # Get the dimensions of the dataframe.
+    (max_row, max_col) = df.shape
+
+    # Create a list of column headers, to use in add_table().
+    column_settings = []
+    for header in df.columns:
+        column_settings.append({'header': header})
+
+    # Add the table.
+    worksheet.add_table(0, 0, max_row, max_col - 1, {'columns': column_settings})
+
+    # Make the columns wider for clarity.
+    worksheet.set_column(0, max_col - 1, 12)
+
+    # Close the Pandas Excel writer and output the Excel file.
+    writer.save()
+    # print("Archivo descargado!!")
+    
+    return send_from_directory(os.getcwd(), 'CoreCapitalEvaluation.xlsx')
 
 @app.errorhandler(404)
 def not_found(error):
