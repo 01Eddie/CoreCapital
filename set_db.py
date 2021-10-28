@@ -32,7 +32,8 @@ session.commit()
 survey=Survey(
     name_survey='Encuesta Perfil de Riesgo',
     description='Cuestionario Integrado Perfil de riesgo y Evaluacion de Producto',
-    nro_questions=39
+    nro_questions=15
+#   nro_questions=39
     )
 session.add(survey)
 session.commit()
@@ -91,7 +92,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='1. Masculino',
-    value=1,
+    value=0,
     order=1
 ))
 # (2,1,1,1,'2. Femenino',2,1,2),
@@ -100,7 +101,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='2. Femenino',
-    value=2,
+    value=0,
     order=2
 ))
 session.commit()
@@ -117,26 +118,6 @@ q2 = Question(
     order=2
 )
 session.add(q2)
-session.commit()
-# (3,3,1,1,'1. Sí.',3,1,3)
-session.add(Question_Option(
-    id_question=q2.id,
-    id_survey=survey.id,
-    id_survey_section=surv_sec.id,
-    name_option='1. Sí.',
-    value=3,
-    order=3
-))
-# (4,3,1,1,'2. No.',4,1,4)
-# INSERT INTO `Question_Options` (`id`,`id_question`,`id_survey`,`id_survey_section`,`name_option`,`value`,`active`,`order`)
-session.add(Question_Option(
-    id_question=q2.id,
-    id_survey=survey.id,
-    id_survey_section=surv_sec.id,
-    name_option='2. No.',
-    value=4,
-    order=4
-))
 session.commit()
 
 
@@ -159,7 +140,7 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='1. Sí.',
-    value=1,
+    value=0,
     order=1
 ))
 # (6,4,1,1,'2. No.',6,1,6)
@@ -168,8 +149,8 @@ session.add(Question_Option(
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='2. No.',
-    value=1,
-    order=1,
+    value=0,
+    order=2,
     survey_is_over=1
 ))
 session.commit()
@@ -188,70 +169,26 @@ q4 = Question(
 )
 session.add(q4)
 session.commit()
-# (7,5,1,2,'1. Extremadamente bajo.',1,1,1)
+# (5,4,1,1,'1. Sí.',5,1,5)
 session.add(Question_Option(
     id_question=q4.id,
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='1. Si.',
-    value=1,
+    value=0,
     order=1
 ))
-# (8,5,1,2,'2. Muy bajo.',2,1,2)
+# (6,4,1,1,'2. No.',6,1,6)
 session.add(Question_Option(
     id_question=q4.id,
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
     name_option='2. No.',
-    value=2,
+    value=0,
     order=2,
     survey_is_over=1
 ))
-# (9,5,1,2,'3. Bajo.',3,1,3)
-# session.add(Question_Option(
-#     id_question=q4.id,
-#     id_survey=survey.id,
-#     id_survey_section=surv_sec.id,
-#     name_option='3. Bajo.',
-#     value=3,
-#     order=3
-# ))
-# # (10,5,1,2,'4. Promedio.',4,1,4)
-# session.add(Question_Option(
-#     id_question=q4.id,
-#     id_survey=survey.id,
-#     id_survey_section=surv_sec.id,
-#     name_option='4. Promedio.',
-#     value=4,
-#     order=4
-# ))
-# # (11,5,1,2,'5. Alto.',5,1,5)
-# session.add(Question_Option(
-#     id_question=q4.id,
-#     id_survey=survey.id,
-#     id_survey_section=surv_sec.id,
-#     name_option='5. Alto.',
-#     value=5,
-#     order=5
-# ))
-# # (12,5,1,2,'6. Muy alto.',6,1,6)
-# session.add(Question_Option(
-#     id_question=q4.id,
-#     id_survey=survey.id,
-#     id_survey_section=surv_sec.id,
-#     name_option='6. Muy alto.',
-#     value=6,
-#     order=6
-# ))
-# # (13,5,1,2,'7. Extremadamente alto.',7,1,7)
-# session.add(Question_Option(
-#     id_question=q4.id,
-#     id_survey=survey.id,
-#     id_survey_section=surv_sec.id,
-#     name_option='7. Extremadamente alto.',
-#     value=7,
-#     order=7
-# ))
+
 session.commit()
 
 #PREGUNTA 1
@@ -333,14 +270,6 @@ session.add(Question_Option(
     order=7
 ))
 session.commit()
-
-# INSERT INTO `Question_Options` (`id_question_option`,`id_question`,`id_survey`,`id_survey_section`,`name_option`,`value`,`active`,`order`)
-# VALUES (1,1,1,1,'1. Masculino',1,1,1),(2,1,1,1,'2. Femenino',2,1,2),
-# (3,2,1,1,'1. Sí.',3,1,3),(4,2,1,1,'2. No.',4,1,4),
-# (5,3,1,1,'1. Sí.',5,1,5),(6,3,1,1,'2. No.',6,1,6),
-# (7,4,1,2,'1. Extremadamente bajo.',1,1,1),(8,4,1,2,'2. Muy bajo.',2,1,2),(9,4,1,2,'3. Bajo.',3,1,3),(10,4,1,2,'4. Promedio.',4,1,4),(11,4,1,2,'5. Alto.',5,1,5),(12,4,1,2,'6. Muy alto.',6,1,6),(13,4,1,2,'7. Extremadamente alto.',7,1,7)
-# ;
-
 
 #PREGUNTA 2
 # (6,2,1,'P2. Cuando piensas en la palabra \'riesgo\' en un contexto financiero, ¿Cuál de las siguientes palabras viene a tu mente primero?',1,1,1,2)
@@ -756,14 +685,14 @@ session.add(Question_Option(
 ))
 session.commit()
 
-
+#PREGUNTA 9
 q13 = Question(
     id_survey_section=surv_sec_2.id,
     id_survey=survey.id,
     name_question='P9. La mayoría de las carteras de inversión presenta una variedad de productos en cuanto al riesgo y al rendimiento. Por favor, indique cuál de las siguientes opciones de cartera representa mejor la combinación de inversiones que te resulta más atractiva.',
     description='',
     answer_required=1,
-    calculated=23,
+    calculated=1,
     order=9
 )
 session.add(q13)
@@ -826,20 +755,20 @@ session.add(Question_Option(
 ))
 session.commit()
 
-
+#PREGUNTA 10
 q14 = Question(
     id_survey_section=surv_sec_2.id,
     id_survey=survey.id,
     name_question='P10. Imagina que estás considerando colocar una cuarta parte de tus inversiones en una sola inversión. Se espera que esta inversión genere aproximadamente el doble de la tasa de un depósito a plazo. Sin embargo, a diferencia de un depósito a plazo, esta inversión no está protegida contra la pérdida del recurso invertido.',
     description='',
     answer_required=1,
-    calculated=23,
+    calculated=1,
     order=10
 )
 session.add(q14)
 session.commit()
 session.add(Question_Option(
-    id_question=q10.id,
+    id_question=q14.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
     name_option='1. Cero, es decir, sin posibilidad de pérdida.',
@@ -872,14 +801,14 @@ session.add(Question_Option(
 ))
 session.commit()
 
-
+#PREGUNTA 11
 q15 = Question(
     id_survey_section=surv_sec_2.id,
     id_survey=survey.id,
     name_question='P11. En los últimos años, ¿Cómo ha cambiado el riesgo de tus inversiones personales?',
     description='',
     answer_required=1,
-    calculated=23,
+    calculated=1,
     order=11
 )
 session.add(q15)
