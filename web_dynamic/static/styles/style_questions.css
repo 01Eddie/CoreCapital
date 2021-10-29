@@ -45,10 +45,8 @@ main {
 }
 
 .container-left {
-    /* background-color: #F97A00; */
-    /* background-color: black; */
     height: 80%;
-    min-width: 28%;
+    min-width: 32%;
     max-width: 20%;
     display: flex;
     justify-content: space-between;
@@ -132,7 +130,7 @@ main {
     position: absolute;
     top: 26%;
     /* left: 41; */
-    right: 14%;
+    right: 16%;
     width: 80%;
     /* height: 100%; */
     display: flex;
@@ -202,8 +200,8 @@ main {
 
 .title {
     font-family: Auxilia-Black;
-    font-size: 2rem;
-    padding-bottom: 1.4rem;
+    font-size: 1.4rem;
+    /* padding-bottom: 0.1rem; */
     letter-spacing: 0.2rem;
     /* background-color: lightgray; */
 }
@@ -223,11 +221,17 @@ main {
 }
 
 .text-buttons {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
     /* background-color: lightcoral; */
-    max-width: 40rem;
+    /* max-width: 40rem; */
+
+    display: grid;
+    /* gap: 1rem; */
+    /* grid-auto-flow: dense; */
+    /* grid-auto-rows: 1rem; */
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
 }
 
 .botones {
