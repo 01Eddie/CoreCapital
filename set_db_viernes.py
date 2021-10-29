@@ -709,7 +709,7 @@ session.commit()
 q13 = Question(
     id_survey_section=surv_sec_2.id,
     id_survey=survey.id,
-    name_question='P9. La mayoría de las carteras de inversión presenta una variedad de productos en cuanto al riesgo y al rendimiento. Por favor, indique cuál de las siguientes opciones de cartera representa mejor la combinación de inversiones que te resulta más atractiva.',
+    name_question='P9. La mayoría de las carteras de inversión presenta una variedad de productos en cuanto al riesgo y al rendimiento. Por favor, indique cuál de las siguientes opciones de cartera representa mejor la combinación de inversiones que te resulta más atractiva con respecto a: Alto Riesgo & Alto Retorno, Medio Riesgo & Medio Retorno, Bajo Riesgo & Bajo Retorno',
     description='',
     answer_required=1,
     calculated=1,
@@ -721,7 +721,7 @@ session.add(Question_Option(
     id_question=q13.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
-    name_option='1. Alto Riesgo & Alto Retorno: 0%, Medio Riesgo & Medio Retorno: 0%, Bajo Riesgo & Bajo Retorno: 100%',
+    name_option='1. 0%,  0%, 100%',
     value=1,
     order=1
 ))
@@ -729,7 +729,7 @@ session.add(Question_Option(
     id_question=q13.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
-    name_option='2. Alto Riesgo & Alto Retorno: 0%, Medio Riesgo & Medio Retorno: 30%, Bajo Riesgo & Bajo Retorno: 70%',
+    name_option='2. 0%,  30%, 70%',
     value=2,
     order=2
 ))
@@ -737,7 +737,7 @@ session.add(Question_Option(
     id_question=q13.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
-    name_option='3. Alto Riesgo & Alto Retorno: 10%, Medio Riesgo & Medio Retorno: 40%, Bajo Riesgo & Bajo Retorno: 50%',
+    name_option='3. 10%,  40%, 50%',
     value=3,
     order=3
 ))
@@ -745,7 +745,7 @@ session.add(Question_Option(
     id_question=q13.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
-    name_option='4. Alto Riesgo & Alto Retorno: 30%, Medio Riesgo & Medio Retorno: 40%, Bajo Riesgo & Bajo Retorno: 30%',
+    name_option='4. 30%,  40%, 30%',
     value=4,
     order=4
 ))
@@ -753,7 +753,7 @@ session.add(Question_Option(
     id_question=q13.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
-    name_option='5. Alto Riesgo & Alto Retorno: 50%, Medio Riesgo & Medio Retorno: 40%, Bajo Riesgo & Bajo Retorno: 10%',
+    name_option='5. 50%,  40%, 10%',
     value=5,
     order=5
 ))
@@ -761,7 +761,7 @@ session.add(Question_Option(
     id_question=q13.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
-    name_option='6. Alto Riesgo & Alto Retorno: 70%, Medio Riesgo & Medio Retorno: 30%, Bajo Riesgo & Bajo Retorno: 0%',
+    name_option='6. 70%,  30%, 0%',
     value=6,
     order=6
 ))
@@ -769,7 +769,7 @@ session.add(Question_Option(
     id_question=q13.id,
     id_survey=survey.id,
     id_survey_section=surv_sec_2.id,
-    name_option='7. Alto Riesgo & Alto Retorno: 100%, Medio Riesgo & Medio Retorno: 0%, Bajo Riesgo & Bajo Retorno: 0%',
+    name_option='7. 100%,  0%, 0%',
     value=7,
     order=7
 ))
