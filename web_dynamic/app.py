@@ -70,7 +70,7 @@ def add_form():
             if check_User is None:
                 return redirect(url_for('modal'))
             return render_template('index.html')
-            
+
         type_document = int(data['type_document'])
         nro_document = data['nro_document']
         name = data['name']
@@ -125,6 +125,11 @@ def options_question():
         data = request.form
         print(data)
     return True """
+
+@app.route("/final", methods=['GET', 'POST'], strict_slashes=False)
+def final():
+    msg = request.args.get("msg")
+    return render_template('final.html', msg=msg)
 
 
 @app.route('/login', methods=['GET', 'POST'], strict_slashes=False)

@@ -11,6 +11,8 @@ let currentIndex = 0;
 let count = 0;
 let measureSum = 0;
 let id_risk_profile = 0;
+// let risk_profile = ''
+let msg = '';
 const user_id = $('#user_id').val();
 
 function progress (parcial, total) {
@@ -34,14 +36,16 @@ function filterAnswer (question) {
   return data;
 }
 
-function sendAnswers (answers) {
+function sendAnswers (answers, msg = 'Gracia por completar la ecuesta.') {
   $.ajax({
     type: 'POST',
     data: JSON.stringify(answers),
     url: answer_url,
     contentType: 'application/json; charset=utf-8',
     success: function (json) {
-      alert('Gracias por completar la encuesta, muy pronto un asesor se comunicará con usted.');
+      // alert('Gracias por completar la encuesta, muy pronto un asesor se comunicará con usted.');
+      window.location = '/final?msg=' + msg;
+      console.log('pop_up');
     },
     error: function (xhr, status) {
       alert('Disculpe, existió un problema');
@@ -89,25 +93,27 @@ function render_question (res) {
       if (question.answer.survey_is_over == 1) {
         progress(1, 1);
         console.log('pop_up');
-        // if (question.id == 11){
-        // console.log('pop_up_final')
-        // } else {
-        // console.log('pop_up')
-        // }
-        // if (question.id == )
-
-        if (measureSum < -1) {
-          id_risk_profile = 1;
-        } else if (measureSum <= 0) {
-          id_risk_profile = 2;
-        } else if (measureSum > 0.75) {
-          id_risk_profile = 4;
+        if (question.id == 3 || question.id == 4) {
+          id_risk_profile = null;
+          msg = 'Usted por el momento no puede acceder a nuestros productos.';
         } else {
-          id_risk_profile = 3;
+          if (measureSum < -1) {
+            id_risk_profile = 1;
+            msg = 'Usted tiene un perfil tipo: Adverso, un asesor se comunicará con usted próximamente.';
+          } else if (measureSum <= 0) {
+            id_risk_profile = 2;
+            msg = 'Usted tiene un perfil tipo: Moderado Adverso, un asesor se comunicará con usted próximamente.';
+          } else if (measureSum > 0.75) {
+            id_risk_profile = 4;
+            msg = 'Usted tiene un perfil tipo: Agresivo, un asesor se comunicará con usted próximamente.';
+          } else {
+            id_risk_profile = 3;
+            msg = 'Usted tiene un perfil tipo: Moderado Agresivo, un asesor se comunicará con usted próximamente.';
+          }
         }
 
         const data = { res: measureSum, answers: answers, id_survey: question.id_survey, id_user: user_id, id_risk_profile: id_risk_profile };
-        sendAnswers(data);
+        sendAnswers(data, msg);
         return;
       }
 

@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*::selection {
+    background: #F97A00;
+    color: white;
+}
+
+@font-face {
+    font-family: "Auxilia-Black";
+    src: url("./fonts/Auxilia-Black.woff2");
+}
+
+body {
+    position: relative;
+    background-color: #A8C2D1;
+    background-image: url("../images/img1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Montserrat';
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 80%;
+    width: 70%;
+    margin: 0;
+    /* margin: auto; */
+    background-color: white;
+    border-radius: 8px;
+}
+
+.container-left {
+    /* background-color: #F97A00; */
+    height: 86%;
+    min-width: 20%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border-right:2px solid #F97A00;
+}
+
+.container-right {
+    padding: 20px 40px 40px;
+    max-width: 640px;
+    /* background-color: white; */
+    height: 100%;
+    min-width: 80%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.logo {
+    width: 180px;
+    margin-top: 2rem;
+}
+
+.text {
+    font-size: .8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:0;
+    height: 100%;
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-bottom: 1.4rem;
+}
+
+.parr {
+    font-size: .9rem;
+    text-align: justify;
+    width: 90%;
+}
+
+.subtitle {
+    font-size: .9rem;
+    font-weight: bold;
+}
+
+.botones {
+    /* padding: 14px 30px!important; */
+    min-width: 14rem;
+    font-weight: 600;
+    font-size: .8rem;
+    border: solid 2px black;
+    display: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 10px 15px 10px 15px ;
+    background-color: white;
+    margin-right: 1rem; 
+}
+
+.botones:hover {
+    background-color: black;
+    color: white;
+}
+
+.boton-x {
+    padding: 10px 20px;
+    font-weight: 250;
+    font-size: 1.7rem;
+    border: solid 1px black;
+    display: block;
+    border-radius: 70%;
+    padding: 10px 15px 10px 15px ;
+    background-color: white;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    margin-right: 1px;
+    top: 15%;
+    right: 12% 
+
+}
+
+.boton-x:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid;
+}
+
+
