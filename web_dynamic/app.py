@@ -149,21 +149,23 @@ def login():
         return render_template('login.html')
 
 
-
-@app.route('/dashboard', methods=['GET', 'POST'], strict_slashes=False)
+@app.route('/dashboard', methods=['GET'], strict_slashes=False)
 def dashboard():
-    if 'username' in flask_session or 'password' in flask_session:
+    if 'username' in flask_session and 'password' in flask_session:
         # print('Loggedo como {}'.format(flask_session['username']))
-        answers = session.query(User, Type_Document).join(Type_Document, User.id_type_document == Type_Document.id).all()
+        # answers = session.query(Answer, Type_Document, User, Question_Option, Question, Risk_Profile).join(User, User.id == Answer.id_user).join(Type_Document, Type_Document.id == User.id_type_document).join(Question_Option, Question_Option.id == Answer.id_question_option).join(Question, Question.id == Answer.id_question).join(Evaluation, User.id == Evaluation.id_user).join(Risk_Profile, Risk_Profile.id == Evaluation.id_risk_profile).all()
+
+        answers = session.query(User, Type_Document, Evaluation, Risk_Profile).join(Type_Document, User.id_type_document == Type_Document.id).join(Evaluation, User.id == Evaluation.id_user).join(Risk_Profile, Risk_Profile.id == Evaluation.id_risk_profile).all()
+        # answers = session.query(User, Type_Document, Evaluation, Risk_Profile).join(Type_Document, User.id_type_document == Type_Document.id).join(Evaluation, Evaluation.id_risk_profile == User.id).filter(Risk_Profile.id == User.id).all()
         # print(answers)
         """ names = pd.DataFrame(answers, columns=answers)
         ex = names.to_excel('dataCorePartners.xlsx') """
         
         return render_template('index-Admin.html', answers=answers)
 
-@app.route('/dashboard-tables', methods=['GET', 'POST'], strict_slashes=False)
+@app.route('/dashboard-tables', methods=['GET'], strict_slashes=False)
 def dashboard_tables():
-    if 'username' in flask_session or 'password' in flask_session:
+    if 'username' in flask_session and 'password' in flask_session:
         # print('Loggedo como {}'.format(flask_session['username']))
         answers = session.query(User, Type_Document).join(Type_Document, User.id_type_document == Type_Document.id).all()
         # print(answers)
@@ -177,6 +179,8 @@ def export():
 def logout():
     # remove the username from the session if it's there
     flask_session.pop('username', None)
+    flask_session.pop('password', None)
+
     return redirect(url_for('login'))
 
 @app.route('/download', methods=['GET', 'POST'])

@@ -119,6 +119,8 @@
                                             <th>Numero de documento</th>
                                             <th>Tipo de documento</th>
                                             <th>Telefono</th>
+                                            <th>Resultado del inversor</th>
+                                            <th>Perfil de Riesgo</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -130,11 +132,15 @@
                                             <th>Email</th>
                                             <th>Numero de documento</th>
                                             <th>Tipo de documento</th>
+                                            <th>Telefono</th>
+                                            <th>Resultado del inversor</th>
+                                            <th>Perfil de Riesgo</th>
                                         </tr>
 
                                     </tfoot>
                                     <tbody>
-                                        {% for user, type_document in answers %}
+                                        <!-- User, Type_Document, Answer, Question_Option, Question, Risk_Profile -->
+                                        {% for user, type_document, evaluation, risk_profile in answers %}
                                         <tr>
                                             <td>{{ user.created_at }}</td>
                                             <td>{{ user.blocked_until }}</td>
@@ -144,6 +150,8 @@
                                             <td>{{ user.nro_document }}</td>
                                             <td>{{ type_document.name }}</td>
                                             <td>{{ user.phone }}</td>
+                                            <td>{{ evaluation.result }}</td>
+                                            <td>{{ risk_profile.name }}</td>
                                         </tr>   
                                         {% endfor %}
                                     </tbody>
