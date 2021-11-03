@@ -15,8 +15,8 @@ In this project will be able to see the different programming languages ​​an
 
 
 ---
-<h2 align="left">Tech Stack</h2>
------------
+Tech Stack
+----------
 
 Here a brief high-level overview of the tech stacl used:
 
@@ -26,19 +26,19 @@ For Fronte end, this project uses HTML/CSS with JavaScript (often shortened to J
 
 
 ---
-<h2 align="left">Installation</h2>
+Installation
 ------------
 
 
 
 ---
-<h3 align="left">Usage</h3>
----------
+Usage
+-----
 
 The use of this project was had from the beginning that it had to be simple, when entering the page you only have to complete essential data to finally obtain a rating, basically the use is provided, with this project to measure the risk capital that would be willing to take on a potential investor.
 
 ---
-<h3 align="left">Lincese</h3>
------------
+Lincese
+-------
 
 This project licensed is under the Core-Partnerts.  Lima-Peru
