@@ -7,8 +7,9 @@
 
 <p align="center">
 This project was carried out due to the need of our client to be able to automate the risk capital processes to their clients, stop sending emails and wait for responses and then finalize in an excel the information to take this process to a single click.
-
-In this project will be able to see the different programming languages and framework that is used
+</p>
+<p align="center">
+In this project will be able to see the different programming languages and framework that is used.
 </p>
 
 
