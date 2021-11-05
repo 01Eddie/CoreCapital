@@ -28,7 +28,11 @@ For Fronte end, this project uses HTML/CSS with JavaScript (often shortened to J
 ---
 🧑‍🔬 Installation
 ------------
+Use the git clone to install this project of Core Capital.
 
+```bash
+git clone https://github.com/01Eddie/CoreCapitalProjectTest.git
+```
 
 
 ---
