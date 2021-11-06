@@ -22,8 +22,17 @@ Here a brief high-level overview of the tech stacl used:
 
 This project uses the Python/Flask Framework, Flask supports extensions that can add application features as if they were implemented in Flask itself.
 
-For Fronte end, this project uses HTML/CSS with JavaScript (often shortened to JS) is a lightweight, interpreted, object-oriented language with first-class functions, and is best known as the scripting language for Web pages.
+For Front end, this project uses HTML/CSS with JavaScript (often shortened to JS) is a lightweight, interpreted, object-oriented language with first-class functions, and is best known as the scripting language for Web pages.
 
+---
+🧑‍🔬 Pre-requirements
+------------
+> Install Python 3
+> Install Pandas
+> Install flask
+> Install CORS
+> Install Sql-Alchemy
+> Install MySQL
 
 ---
 🧑‍🔬 Installation
@@ -42,7 +51,7 @@ Usage
 The use of this project was had from the beginning that it had to be simple, when entering the page you only have to complete essential data to finally obtain a rating, basically the use is provided, with this project to measure the risk capital that would be willing to take on a potential investor.
 
 ---
-⚠️ Lincese
+⚠️ License
 -------
 
 This project licensed is under the Core-Partnerts.  Lima-Peru
