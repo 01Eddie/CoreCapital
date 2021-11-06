@@ -27,12 +27,12 @@ For Front end, this project uses HTML/CSS with JavaScript (often shortened to JS
 ---
 🧑‍🔬 Pre-requirements
 ------------
-> Install Python 3
-> Install Pandas
-> Install flask
-> Install CORS
-> Install Sql-Alchemy
-> Install MySQL
+* Install Python 3
+* Install Pandas
+* Install flask
+* Install CORS
+* Install Sql-Alchemy
+* Install MySQL
 
 ---
 🧑‍🔬 Installation
