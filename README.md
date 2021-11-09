@@ -55,3 +55,9 @@ The use of this project was had from the beginning that it had to be simple, whe
 -------
 
 This project licensed is under the Core-Partnerts.  Lima-Peru
+
+---
+Appreciations
+-----
+
+
