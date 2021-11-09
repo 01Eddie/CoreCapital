@@ -23,7 +23,6 @@ from models.user import User
 #     return data
 
 
-
 @app_views.route('/answers', methods=['POST'], strict_slashes=False)
 def save_answers():
     """
@@ -49,6 +48,22 @@ def save_answers():
         )
         session.add(ans)
 
+    if result is None:
+        id_risk_profile = None;
+        msg = 'Usted por el momento no puede acceder a nuestros productos.';
+    elif result < -1:
+        id_risk_profile = 1
+        msg = 'Usted tiene un perfil tipo: Adverso, un asesor se comunicará con usted próximamente.'
+    elif result <= 0:
+        id_risk_profile = 2
+        msg = 'Usted tiene un perfil tipo: Moderado Adverso, un asesor se comunicará con usted próximamente.'
+    elif result > 0.75:
+        id_risk_profile = 4
+        msg = 'Usted tiene un perfil tipo: Agresivo, un asesor se comunicará con usted próximamente.'
+    else:
+        id_risk_profile = 3;
+        msg = 'Usted tiene un perfil tipo: Moderado Agresivo, un asesor se comunicará con usted próximamente.'
+
     user = session.query(User).filter(User.id==id_user).first()
     user.age = id_age
 
@@ -63,4 +78,4 @@ def save_answers():
     session.add(evaluation)
 
     session.commit()
-    return jsonify({'status': 'ok'})
+    return jsonify({'status': 'ok', 'msg': msg})

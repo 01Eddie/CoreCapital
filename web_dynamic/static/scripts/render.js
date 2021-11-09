@@ -10,8 +10,7 @@ let questions = [];
 let currentIndex = 0;
 let count = 0;
 let measureSum = 0;
-let id_risk_profile = 0;
-let msg = '';
+const id_risk_profile = 0;
 const user_id = $('#user_id').val();
 let user_age = null;
 
@@ -43,7 +42,7 @@ function sendAnswers (answers, msg = 'Gracias por completar la encuesta.') {
     url: answer_url,
     contentType: 'application/json; charset=utf-8',
     success: function (json) {
-      window.location = '/final?msg=' + msg;
+      window.location = '/final?msg=' + json.msg;
     },
     error: function (xhr, status) {
       alert('Disculpe, existió un problema');
@@ -78,39 +77,20 @@ function render_question (res) {
         measureSum = measureSum + measureOp;
       }
       count = count + question.answer.value;
-      // console.log(measureSum);
-      // console.log(`Resultado: ${count}`);
 
       // Verifica que la encuesta ha finalizado
       if (question.answer.survey_is_over == 1) {
         progress(1, 1);
         console.log('pop_up');
         if (question.id == 3 || question.id == 4) {
-          id_risk_profile = null;
-          msg = 'Usted por el momento no puede acceder a nuestros productos.';
-        } else {
-          if (measureSum < -1) {
-            id_risk_profile = 1;
-            msg = 'Usted tiene un perfil tipo: Adverso, un asesor se comunicará con usted próximamente.';
-          } else if (measureSum <= 0) {
-            id_risk_profile = 2;
-            msg = 'Usted tiene un perfil tipo: Moderado Adverso, un asesor se comunicará con usted próximamente.';
-          } else if (measureSum > 0.75) {
-            id_risk_profile = 4;
-            msg = 'Usted tiene un perfil tipo: Agresivo, un asesor se comunicará con usted próximamente.';
-          } else {
-            id_risk_profile = 3;
-            msg = 'Usted tiene un perfil tipo: Moderado Agresivo, un asesor se comunicará con usted próximamente.';
-          }
+          measureSum = null;
         }
 
         const data = { res: measureSum, answers: answers, id_survey: question.id_survey, id_user: user_id, id_risk_profile: id_risk_profile, user_age };
-        sendAnswers(data, msg);
+        sendAnswers(data);
         console.log(user_age);
         return;
       }
-
-      // <h1 align="center">Mezcla de inversion en cartera</h1>
 
       my_table = `
           <table border="1" align="center"></i>
