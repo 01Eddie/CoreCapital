@@ -1,8 +1,9 @@
 
-export function createElement (type, attrList = {}, children = []) {
+function createElement (type, attrList = {}, children = [], content = '') {
   const elem = document.createElement(type);
   const keys = Object.keys(attrList);
   keys.map(k => elem.setAttribute(k, attrList[k]));
+  elem.innerHTML = content;
 
   children.map(child => renderChild(elem, child));
   return elem;
@@ -16,13 +17,11 @@ function renderChild (elem, child) {
   elem.appendChild(child);
 }
 
-export function appendRender (elem, DOMelem) {
-  DOMelem.appendChild(elem);
+function appendRender (elem, DOMelem) {
   DOMelem.appendChild(elem);
 }
 
-export function Render (elem, DOMelem) {
-  console.log(elem, DOMelem);
-  DOMelem.appendChild(elem);
-  DOMelem.appendChild(elem);
-}
+// function render (elem, DOMelem) {
+//   // console.log(elem, DOMelem);
+//   DOMelem.innerHTML(elem);
+// }

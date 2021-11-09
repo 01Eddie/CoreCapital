@@ -11,7 +11,6 @@ let currentIndex = 0;
 let count = 0;
 let measureSum = 0;
 let id_risk_profile = 0;
-// let risk_profile = ''
 let msg = '';
 const user_id = $('#user_id').val();
 
@@ -36,16 +35,14 @@ function filterAnswer (question) {
   return data;
 }
 
-function sendAnswers (answers, msg = 'Gracia por completar la ecuesta.') {
+function sendAnswers (answers, msg = 'Gracias por completar la encuesta.') {
   $.ajax({
     type: 'POST',
     data: JSON.stringify(answers),
     url: answer_url,
     contentType: 'application/json; charset=utf-8',
     success: function (json) {
-      // alert('Gracias por completar la encuesta, muy pronto un asesor se comunicará con usted.');
       window.location = '/final?msg=' + msg;
-      console.log('pop_up');
     },
     error: function (xhr, status) {
       alert('Disculpe, existió un problema');
@@ -54,7 +51,6 @@ function sendAnswers (answers, msg = 'Gracia por completar la ecuesta.') {
       // alert('Petición realizada');
     }
   });
-  // console.log(answers);
 }
 
 function render_question (res) {
@@ -74,12 +70,7 @@ function render_question (res) {
 
       question.answer = { ...options.find(op => op.id == id) };
       const answer = filterAnswer(question);
-      console.log(answer);
       answers.push(answer);
-      console.log(question.answer.value);
-      console.log(question.answer.media);
-      console.log(question.answer.desv_std);
-      console.log(question.answer.score);
 
       if (question.measure) {
         const measureOp = ((question.answer.value - question.measure.media) / question.measure.desv_std) * question.measure.score;
@@ -117,7 +108,74 @@ function render_question (res) {
         return;
       }
 
+      my_table = `
+          <h1 align="center">Mezcla de inversion en cartera</h1>
+          <table border="1" align="center"></i>
+            <tr>
+              <th scope="col"><strong>Cartera</th>
+              <th cope="col"><strong>Alto Riesgo &<br> Alto Retorno</th>
+              <th cope="col"><strong>Medio Riesgo &<br> Medio Retorno</th>
+              <th cope="col"><strong>Bajo Riesgo &<br> Bajo Retorno</th>
+            </tr>
+
+            <tr>
+              <td>1</td>
+              <td>0%</td>
+              <td>0%</td>
+              <td>100%</td>
+            </tr>
+            
+            <tr>
+              <td>2</td>
+              <td>0%</td>
+              <td>30%</td>
+              <td>70%</td>
+            </tr>
+            
+            <tr>
+              <td>3</td>
+              <td>10%</td>
+              <td>40%</td>
+              <td>50%</td>
+            </tr>
+
+            <tr>
+              <td>4</td>
+              <td>30%</td>
+              <td>40%</td>
+              <td>30%</td>
+            </tr>
+
+            <tr>
+              <td>5</td>
+              <td>50%</td>
+              <td>40%</td>
+              <td>10%</td>
+            </tr>
+
+            <tr>
+              <td>6</td>
+              <td>70%</td>
+              <td>30%</td>
+              <td>0%</td>
+            </tr>
+
+            <tr>
+              <td>7</td>
+              <td>100%</td>
+              <td>0%</td>
+              <td>0%</td>
+            </tr>
+
+          </table>
+      `;
       render_question(questions[currentIndex]);
+      if (question.order == 8) {
+        const container = document.getElementById('text-buttons');
+        const table = createElement('div', { class: 'my_table' }, children = [], content = my_table);
+        container.appendChild(table);
+      }
+
       progress(currentIndex, questions.length);
     }, false);
   });
