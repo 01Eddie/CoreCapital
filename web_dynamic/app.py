@@ -20,6 +20,7 @@ from models.risk_profile import Risk_Profile
 from flask_cors import CORS
 from flask import session as flask_session
 import pandas as pd
+import smtplib
 import os
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
@@ -129,6 +130,22 @@ def options_question():
 @app.route("/final", methods=['GET', 'POST'], strict_slashes=False)
 def final():
     msg = request.args.get("msg")
+    if request.method == 'POST':
+        user = session.query(User).filter(User.id == request.get_json().get('user_id')).first()
+        user_id = request.get_json().get('user_id')
+        print(user_id)
+        email = "EMAIL HERE"
+        # In the console PASSWORD=PASSWORD_HERE python3 -m web_dynamic.app
+        message = "Subject: Tienes un usuario nuevo Usuario Numero: {}\n\nUna persona se acaba de registrar con el \n- Nombre: {}\n- Apellido: {}\n Email:{}\n- Telefono: {}".format(user.id, user.name, user.lastname, user.email, user.phone)
+        # tolist = "Tienes un usuario nuevo Nmro: {}".format(user.id)
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(email, os.getenv("PASSWORD"))
+        # print("{}".format(os.getenv("PASSWORD")))
+        server.sendmail(email, email, message)
+        print("message enviado")
+        return "Mensaje enviado", 200
+    # else:
     return render_template('final.html', msg=msg)
 
 
