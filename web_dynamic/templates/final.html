@@ -15,7 +15,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../static/styles/style_final.css">
     <script src="../static/scripts/script.js"></script>
-
 </head>
 
 <body>
@@ -30,13 +29,14 @@
                 <h1 class="black title" > Integrado Perfil de Riesgo y Evaluacion de Producto</h1>
                 <div class="parr">
 
-										<p class="msg_generic">Gracias por completar la ecuesta</p>
+										<p class="msg_generic">Gracias por completar la encuesta</p>
 										<p class="msg_inicio">{{ msg }}</p>
                     <!-- <p>Contestar este cuestionario no te tomara mas de 10 minutos. No hay respuestas correctas o incorrectas. Lo que nos interesa es conocer tu perspectiva.</p> -->
                 </div>
                 <div class="text-buttons">
                     <a href="https://corecapital.com.pe/">
-                        <button type="button" class="botones">Llevame a la pagina principal</button>
+                        <form  id="form" action="{{url_for('final')}}" method="post">
+                        <button type="button" class="botones">Llevame a la pagina principal</button></form>
                     </a>
                 </div>
             </div>
