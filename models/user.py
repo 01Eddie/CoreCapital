@@ -20,6 +20,7 @@ class User(BaseModel, Base):
     nro_document = Column(String(25), nullable=False)
     password = Column(String(255), nullable=True)
     phone = Column(String(20), nullable=False)
+    age = Column(Integer, nullable=True)
 #    active = Column(Integer, nullable=False)
 #    deleted_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 #    created_by = Column(DateTime, default=datetime.utcnow, nullable=False)

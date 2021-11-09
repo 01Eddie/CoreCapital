@@ -16,7 +16,6 @@ def get_users():
     or a specific user
     """
     all_users = session.query(User).all()
-    
     # all_users = User.query.all()
     list_users = []
     for user in all_users:

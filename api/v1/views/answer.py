@@ -35,7 +35,7 @@ def save_answers():
     id_survey = data.get('id_survey')
     id_user = data.get('id_user')
     id_risk_profile = data.get('id_risk_profile')
-    # print('despues de result')
+    id_age = data.get('user_age')
     for answer in answer_list:
         ans = Answer(
         id_user = answer.get('user_id'),
@@ -49,6 +49,9 @@ def save_answers():
         )
         session.add(ans)
 
+    user = session.query(User).filter(User.id==id_user).first()
+    user.age = id_age
+
     evaluation = Evaluation(
         id_risk_profile = id_risk_profile,
         id_survey = id_survey,
@@ -56,6 +59,7 @@ def save_answers():
         result = result
     )
     print(result)
+    print(user.age)
     session.add(evaluation)
 
     session.commit()

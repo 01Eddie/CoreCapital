@@ -13,6 +13,7 @@ let measureSum = 0;
 let id_risk_profile = 0;
 let msg = '';
 const user_id = $('#user_id').val();
+let user_age = null;
 
 function progress (parcial, total) {
   const progress_index = parseInt((parcial / total) * 100);
@@ -103,13 +104,15 @@ function render_question (res) {
           }
         }
 
-        const data = { res: measureSum, answers: answers, id_survey: question.id_survey, id_user: user_id, id_risk_profile: id_risk_profile };
+        const data = { res: measureSum, answers: answers, id_survey: question.id_survey, id_user: user_id, id_risk_profile: id_risk_profile, user_age };
         sendAnswers(data, msg);
+        console.log(user_age);
         return;
       }
 
+      // <h1 align="center">Mezcla de inversion en cartera</h1>
+
       my_table = `
-          <h1 align="center">Mezcla de inversion en cartera</h1>
           <table border="1" align="center"></i>
             <tr>
               <th scope="col"><strong>Cartera</th>
@@ -169,7 +172,27 @@ function render_question (res) {
 
           </table>
       `;
+
+      my_list = `
+        <label for="quantity"></label>
+        <input type="number" id="quantity" name="quantity" min="1" max="100" placeholder="18">
+      `;
+
+      if (question.order == 2 && question.id_survey_section == 1) {
+        const container = document.getElementById('text-buttons');
+        user_age = $('#quantity').val();
+        console.log('inicializando variable user_age:');
+        console.log(user_age);
+      }
+
       render_question(questions[currentIndex]);
+
+      if (question.order == 1 && question.id_survey_section == 1) {
+        const container = document.getElementById('text-buttons');
+        const list = createElement('div', { class: 'my_table' }, children = [], content = my_list);
+        container.appendChild(list);
+      }
+
       if (question.order == 8) {
         const container = document.getElementById('text-buttons');
         const table = createElement('div', { class: 'my_table' }, children = [], content = my_table);

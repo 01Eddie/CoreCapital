@@ -126,7 +126,7 @@ session.add(Question_Option(
     id_question=q2.id,
     id_survey=survey.id,
     id_survey_section=surv_sec.id,
-    name_option='Placeholder',
+    name_option='Siguiente',
     value=0,
     order=1
 ))
