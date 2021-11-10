@@ -32,7 +32,7 @@ def save_answers():
     answer_list = data.get('answers')
     result = data.get('res')
     id_survey = data.get('id_survey')
-    id_user = data.get('id_')
+    id_user = data.get('id_user')
     id_risk_profile = data.get('id_risk_profile')
     id_age = data.get('user_age')
     for answer in answer_list:
