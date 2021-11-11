@@ -1,9 +1,9 @@
 // import { createElement, Render, appendRender } from '../scripts/libreria.js';
 
-// const url = 'http://localhost:5001/api/v1/surveys/1/sections/1/questions/1';
-const questions_url = 'http://localhost:5001/api/v1/questions';
-const answer_url = 'http://localhost:5001/api/v1/answers';
-const profile_url = 'http://localhost:5001/api/v1/risk_profile';
+// const url = 'http://8302-107-21-85-68.ngrok.io/api/v1/surveys/1/sections/1/questions/1';
+const questions_url = 'http://8302-107-21-85-68.ngrok.io/api/v1/questions';
+const answer_url = 'http://8302-107-21-85-68.ngrok.io/api/v1/answers';
+const profile_url = 'http://8302-107-21-85-68.ngrok.io/api/v1/risk_profile';
 
 const answers = [];
 let questions = [];
