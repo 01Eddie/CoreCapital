@@ -134,7 +134,7 @@ def final():
         user = session.query(User).filter(User.id == request.get_json().get('user_id')).first()
         user_id = request.get_json().get('user_id')
         print(user_id)
-        email = "EMAIL_HERE"
+        email = "capitalcore2021@gmail.com"
         # In the console PASSWORD=PASSWORD_HERE python3 -m web_dynamic.app
         message = "Subject: Tienes un usuario nuevo Usuario Numero: {}\n\nUna persona se acaba de registrar con el \n- Nombre: {}\n- Apellido: {}\n Email:{}\n- Telefono: {}".format(user.id, user.name, user.lastname, user.email, user.phone)
         # tolist = "Tienes un usuario nuevo Nmro: {}".format(user.id)
@@ -143,7 +143,7 @@ def final():
         server.login(email, os.getenv("PASSWORD"))
         # print("{}".format(os.getenv("PASSWORD")))
         server.sendmail(email, email, message)
-        #print("message enviado")
+            #print("message enviado")
         return "Mensaje enviado", 200
     # else:
     return render_template('final.html', msg=msg)

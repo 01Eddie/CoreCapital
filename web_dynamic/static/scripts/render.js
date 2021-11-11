@@ -85,10 +85,21 @@ function render_question (res) {
         if (question.id == 3 || question.id == 4) {
           measureSum = null;
         }
-
         const data = { res: measureSum, answers: answers, id_survey: question.id_survey, id_user: user_id, id_risk_profile: id_risk_profile, user_age };
         sendAnswers(data);
         console.log(user_age);
+        if (questions[currentIndex] === undefined) {
+          // Ruta para enviar el msj
+          $.ajax({
+            type: 'POST',
+            data: JSON.stringify({user_id:user_id}),
+            url: "/final",
+            contentType: 'application/json; charset=utf-8',
+            error: function (xhr, status) {
+              alert('Disculpe, existió un problema');
+            }
+          });
+        }
         return;
       }
 
