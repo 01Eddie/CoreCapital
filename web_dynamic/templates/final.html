@@ -30,14 +30,14 @@
                 <div class="parr">
 
 										<p class="msg_generic">Gracias por completar la encuesta</p>
-										<p class="msg_inicio">{{ msg }}</p>
+										<p class="msg_inicio">{{ msg|safe }}</p>
                     <!-- <p>Contestar este cuestionario no te tomara mas de 10 minutos. No hay respuestas correctas o incorrectas. Lo que nos interesa es conocer tu perspectiva.</p> -->
                 </div>
                 <div class="text-buttons">
                     <a href="https://corecapital.com.pe/">
-<!--                         <form  id="form" action="{{url_for('final')}}" method="post">
- -->                        <button type="button" class="botones">Llevame a la pagina principal</button>
-<!-- </form> -->
+                        <!-- <form  id="form" action="{{url_for('final')}}" method="post"> -->
+                            <button type="button" class="botones">Llevame a la pagina principal</button>
+                        <!-- </form> -->
                     </a>
                 </div>
             </div>
