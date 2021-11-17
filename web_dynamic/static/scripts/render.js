@@ -1,9 +1,9 @@
 // import { createElement, Render, appendRender } from '../scripts/libreria.js';
 
-// const url = 'http://8302-107-21-85-68.ngrok.io/api/v1/surveys/1/sections/1/questions/1';
-const questions_url = 'http://8302-107-21-85-68.ngrok.io/api/v1/questions';
-const answer_url = 'http://8302-107-21-85-68.ngrok.io/api/v1/answers';
-const profile_url = 'http://8302-107-21-85-68.ngrok.io/api/v1/risk_profile';
+// const url = 'http://localhost:5001/api/v1/surveys/1/sections/1/questions/1';
+const questions_url = 'http://localhost:5001/api/v1/questions';
+const answer_url = 'http://localhost:5001/api/v1/answers';
+const profile_url = 'http://localhost:5001/api/v1/risk_profile';
 
 const answers = [];
 let questions = [];
@@ -92,8 +92,8 @@ function render_question (res) {
           // Ruta para enviar el msj
           $.ajax({
             type: 'POST',
-            data: JSON.stringify({user_id:user_id}),
-            url: "/final",
+            data: JSON.stringify({ user_id: user_id }),
+            url: '/final',
             contentType: 'application/json; charset=utf-8',
             error: function (xhr, status) {
               alert('Disculpe, existió un problema');
@@ -166,26 +166,24 @@ function render_question (res) {
 
       my_list = `
         <label for="quantity"></label>
-        <input type="number" id="quantity" name="quantity" min="1" max="100" placeholder="18">
+        <input class="input_age" type="number" id="quantity" name="quantity" min="18" max="100" placeholder="18" value="18">
       `;
 
       if (question.order == 2 && question.id_survey_section == 1) {
-        const container = document.getElementById('text-buttons');
+        const container = document.getElementById('p_question');
         user_age = $('#quantity').val();
-        console.log('inicializando variable user_age:');
-        console.log(user_age);
       }
 
       render_question(questions[currentIndex]);
 
       if (question.order == 1 && question.id_survey_section == 1) {
-        const container = document.getElementById('text-buttons');
-        const list = createElement('div', { class: 'my_table' }, children = [], content = my_list);
+        const container = document.getElementById('p_question');
+        const list = createElement('div', { class: 'input_age_container' }, children = [], content = my_list);
         container.appendChild(list);
       }
 
       if (question.order == 8) {
-        const container = document.getElementById('text-buttons');
+        const container = document.getElementById('p_question');
         const table = createElement('div', { class: 'my_table' }, children = [], content = my_table);
         container.appendChild(table);
       }
