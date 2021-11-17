@@ -6,7 +6,7 @@ from os import environ
 from datetime import datetime
 from api.v1.views import question
 import models
-from models import session
+# from models import session
 from models.question import Question
 from models.user import User
 from models.answer import Answer
@@ -22,6 +22,8 @@ from flask import session as flask_session
 import pandas as pd
 import smtplib
 import os
+
+# session = models.session
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
@@ -64,10 +66,10 @@ def add_form():
             2: Pasaporte
             3: Carnet de Extranjería]
         """
-        user_Obj = session.query(User).filter(User.nro_document == data.get('nro_document')).first()
+        user_Obj = models.session.query(User).filter(User.nro_document == data.get('nro_document')).first()
         # print(data)
         if user_Obj is not None:
-            check_User = session.query(Answer).filter(Answer.id_user == user_Obj.id).first()
+            check_User = models.session.query(Answer).filter(Answer.id_user == user_Obj.id).first()
             if check_User is None:
                 return redirect(url_for('modal'))
             return render_template('index.html')
@@ -92,8 +94,8 @@ VALUES (1,1,'admin','admin','admin@gmail.com','11111111','999999999',1,'2021-10-
             nro_document=nro_document,
             phone=phone
             )
-        session.add(user)
-        session.commit()
+        models.session.add(user)
+        models.session.commit()
         flask_session['user_id']=user.id
         return redirect(url_for('modal'))
         # return render_template('modal.html')
@@ -131,7 +133,7 @@ def options_question():
 def final():
     msg = request.args.get("msg")
     if request.method == 'POST':
-        user = session.query(User).filter(User.id == request.get_json().get('user_id')).first()
+        user = models.session.query(User).filter(User.id == request.get_json().get('user_id')).first()
         user_id = request.get_json().get('user_id')
         print(user_id)
         email = "capitalcore2021@gmail.com"
@@ -176,20 +178,23 @@ def dashboard():
     if 'username' in flask_session and 'password' in flask_session:
         # print('Loggedo como {}'.format(flask_session['username']))
         # answers = session.query(Answer, Type_Document, User, Question_Option, Question, Risk_Profile).join(User, User.id == Answer.id_user).join(Type_Document, Type_Document.id == User.id_type_document).join(Question_Option, Question_Option.id == Answer.id_question_option).join(Question, Question.id == Answer.id_question).join(Evaluation, User.id == Evaluation.id_user).join(Risk_Profile, Risk_Profile.id == Evaluation.id_risk_profile).all()
+        models.session.commit()
 
-        answers = session.query(User, Type_Document, Evaluation, Risk_Profile).join(Type_Document, User.id_type_document == Type_Document.id).join(Evaluation, User.id == Evaluation.id_user).join(Risk_Profile, Risk_Profile.id == Evaluation.id_risk_profile).all()
+        answers = models.session.query(User, Type_Document, Evaluation, Risk_Profile).join(Type_Document, User.id_type_document == Type_Document.id).join(Evaluation, User.id == Evaluation.id_user).join(Risk_Profile, Risk_Profile.id == Evaluation.id_risk_profile).all()
         # answers = session.query(User, Type_Document, Evaluation, Risk_Profile).join(Type_Document, User.id_type_document == Type_Document.id).join(Evaluation, Evaluation.id_risk_profile == User.id).filter(Risk_Profile.id == User.id).all()
-        # print(answers)
+        print(models.session.query(User).all())
+        print(models.session.query(Evaluation).all())
+        print(answers)
         """ names = pd.DataFrame(answers, columns=answers)
         ex = names.to_excel('dataCorePartners.xlsx') """
-        
+
         return render_template('index-Admin.html', answers=answers)
 
 @app.route('/dashboard-tables', methods=['GET'], strict_slashes=False)
 def dashboard_tables():
     if 'username' in flask_session and 'password' in flask_session:
         # print('Loggedo como {}'.format(flask_session['username']))
-        answers = session.query(User, Type_Document).join(Type_Document, User.id_type_document == Type_Document.id).all()
+        answers = models.session.query(User, Type_Document).join(Type_Document, User.id_type_document == Type_Document.id).all()
         # print(answers)
         return render_template('tables.html', answers=answers)
 
@@ -217,9 +222,9 @@ def download():
 
     # Create a Pandas dataframe from some data.
     data = [10, 20, 30, 40, 50, 60, 70, 80]
-    questions = session.query(Question).all()
-    users = session.query(User).all()
-    answers = session.query(Answer, Type_Document, User, Question_Option, Question, Risk_Profile).join(User, User.id == Answer.id_user).join(Type_Document, Type_Document.id == User.id_type_document).join(Question_Option, Question_Option.id == Answer.id_question_option).join(Question, Question.id == Answer.id_question).join(Evaluation, User.id == Evaluation.id_user).join(Risk_Profile, Risk_Profile.id == Evaluation.id_risk_profile).all()
+    questions = models.session.query(Question).all()
+    users = models.session.query(User).all()
+    answers = models.session.query(Answer, Type_Document, User, Question_Option, Question, Risk_Profile).join(User, User.id == Answer.id_user).join(Type_Document, Type_Document.id == User.id_type_document).join(Question_Option, Question_Option.id == Answer.id_question_option).join(Question, Question.id == Answer.id_question).join(Evaluation, User.id == Evaluation.id_user).join(Risk_Profile, Risk_Profile.id == Evaluation.id_risk_profile).all()
 
     # answers = session.query(Type_Document, User, Answer, Question_Option, Question).join(User, User.id_type_document == Type_Document.id).join(Answer, Answer.id_user == User.id).join(Question_Option, Question_Option.id == Answer.id_question_option).join(Question, Question.id == Answer.id_question).all()
     # answer_options = session.query(Answer, Question_Option).join(Answer, Answer.id_question_option == Question_Option.id).all()
@@ -239,7 +244,7 @@ def download():
     list_answered_question = [aq[3].name_option for aq in answers]
     list_question_size = [qs[0].answer_value for qs in answers]
     list_profile = [p[5].name for p in answers]
-    
+
     df = pd.DataFrame({
         "Creado: ": list_created,
         "Nombre":list_name,
@@ -281,7 +286,7 @@ def download():
     # Close the Pandas Excel writer and output the Excel file.
     writer.save()
     # print("Archivo descargado!!")
-    
+
     return send_from_directory(os.getcwd(), 'CoreCapitalEvaluation.xlsx')
 
 @app.errorhandler(404)
